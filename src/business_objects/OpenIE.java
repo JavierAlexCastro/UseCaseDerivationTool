@@ -31,8 +31,8 @@ public class OpenIE {
 	private void printTriples(ArrayList<String[]> array_triples) {
 		for (int i = 0; i<array_triples.size(); i++) {
 			System.out.print("Triple #" + i + ": ");
-			System.out.print(array_triples.get(i)[0] + " ");
-			System.out.print(array_triples.get(i)[1] + " ");
+			System.out.print(array_triples.get(i)[0] + " | ");
+			System.out.print(array_triples.get(i)[1] + " | ");
 			System.out.print(array_triples.get(i)[2] + "\n");
 		}
 	}

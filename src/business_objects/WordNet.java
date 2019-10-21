@@ -1,16 +1,10 @@
 package business_objects;
 
-import java.util.List;
 import java.io.FileInputStream;
-import java.util.ArrayList;
 
 import net.didion.jwnl.JWNL;
 import net.didion.jwnl.data.IndexWord;
 import net.didion.jwnl.data.POS;
-import net.didion.jwnl.data.Pointer;
-import net.didion.jwnl.data.PointerType;
-import net.didion.jwnl.data.Synset;
-import net.didion.jwnl.data.Word;
 import net.didion.jwnl.dictionary.Dictionary;
 
 
@@ -29,6 +23,7 @@ public class WordNet {
 		String subject = triple[0];
 		String verb = triple[1];
 		String object = triple[2];
+		String temp_verb = "";
 		
 		// initialize JWNL (this must be done before JWNL can be used)
 		try {
@@ -38,23 +33,27 @@ public class WordNet {
 		}
 		
 		//if verb does not already end with -ion, add -ion
-		if(!verb.endsWith("ion")) { verb = verb+"ion"; }
+		if(!verb.endsWith("ion")) { temp_verb = verb+"ion"; }
 		
 		//check if verb is a valid word
-		if(isValidWord(verb)) {
+		if(isValidWord(temp_verb)) {
 			vprocess = "Y";
-			System.out.println("Word: " + verb + " is Valid");
+			//System.out.println("Word: " + verb + " is Valid");
 		}else {
 			vprocess = "N";
-			System.out.println("Word: " + verb + " is NOT Valid");
+			//System.out.println("Word: " + verb + " is NOT Valid");
 		}
 		
 		//get stype and otype
 		stype = getWordType(subject);
+		//System.out.println("S-Type: " + stype);
 		otype = getWordType(object);
+		//System.out.println("O-Type: " + otype);
+
 		
 		//get vcat
 		//The V-cat needs to check with WordNet to see if the verb is one of the synonyms to one of the words on the list
+		vcat = "?";
 		
 		String[] types = {stype, otype, vcat, vprocess};
 		return types;
@@ -94,7 +93,7 @@ public class WordNet {
 	/**
 	* @return All synsets for the given word and POS category.
 	*/
-	private Synset[] synsetsOf(String token, POS postag) {
+	/*private Synset[] synsetsOf(String token, POS postag) {
 		try {
 			IndexWord iword = Dictionary.getInstance().lookupIndexWord(postag, token);
 			if( iword != null ) {
@@ -105,15 +104,15 @@ public class WordNet {
 			ex.printStackTrace(); 
 		}
 		return null;
-	}
+	}*/
 	
-	private List<String> synonymOf(String token) {
+	/*private List<String> synonymOf(String token) {
 	    POS pos = POS.VERB;	    
 	    // Get the synsets.
 	    Synset[] synsets = synsetsOf(token.substring(2), pos);
 	    List<String> synonyms = new ArrayList<String>();
 	    System.out.println(synsets.toString());
-	    /*
+	    
 	    if( synsets != null ) {
 	      for( Synset synset : synsets ) {
 	        List<String> syms = _wordnet.wordsInSynset(synset);
@@ -124,9 +123,9 @@ public class WordNet {
 	            synonyms.add(strtoken);
 	        }
 	      }
-	    }*/
+	    }
 	    return synonyms;
-	}
+	}*/
 	
 	public static void main(String[] args) {
 	      WordNet wn = new WordNet();

@@ -1,5 +1,6 @@
 package business_objects;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -21,6 +22,10 @@ public class StanfordNLP {
 		String otag = "";
 		String oner = "";
 		Properties props = new Properties();
+		List<String> subject = Arrays.asList(triple[0].split(" "));
+		List<String> verb = Arrays.asList(triple[1].split(" "));
+		List<String> object = Arrays.asList(triple[2].split(" "));
+		
 	    props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner");
 	    StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
@@ -32,15 +37,27 @@ public class StanfordNLP {
 	    for (CoreMap sentence : sentences) {
 	        for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) {
 	            String word = token.get(CoreAnnotations.TextAnnotation.class);
+	            if(subject.contains(word)){
+	            	stag = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+		            sner = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
+	            }else if(verb.contains(word)){
+	            	vtag = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+	            }else if(object.contains(word)){
+	            	otag = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+		            oner = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
+	            }else{
+	            	System.out.println("Not subject, not ver, not object?");
+	            }
 	            // this is the POS tag of the token
-	            String pos = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
-	            String ner = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
-	            System.out.println(word + " - POS: " + pos + " - NER: " + ner);
+	            //String pos = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+	            //String ner = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
+	            //System.out.println(word + " - POS: " + pos + " - NER: " + ner);
 	            
 	            //update tag and ner variables
 	        }
-	    }		
+	    }	
 		String[] tags = {stag, sner, vtag, otag, oner};
+		//System.out.println(Arrays.toString(tags));
 		return tags;
 	}
 	
