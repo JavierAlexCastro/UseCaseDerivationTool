@@ -1,7 +1,9 @@
 package business_objects;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 /**
  * <p>Title: Machine Learning Use Case Derivation</p>
@@ -25,8 +27,8 @@ public class FeatureVector {
    private ArrayList<String> stype;
    private ArrayList<String> verb;
    private ArrayList<String> vtag;
-   private ArrayList<String> vcat;
-   private ArrayList<String> vprocess;
+   private ArrayList<Integer> vcat;
+   private ArrayList<Integer> vprocess;
    private ArrayList<String> object;
    private ArrayList<String> otag;
    private ArrayList<String> oner;
@@ -43,8 +45,8 @@ public class FeatureVector {
 	   stype = new ArrayList<String>();
 	   verb = new ArrayList<String>();
 	   vtag = new ArrayList<String>();
-	   vcat = new ArrayList<String>();
-	   vprocess = new ArrayList<String>();
+	   vcat = new ArrayList<Integer>();
+	   vprocess = new ArrayList<Integer>();
 	   object = new ArrayList<String>();
 	   otag = new ArrayList<String>();
 	   oner = new ArrayList<String>();
@@ -61,6 +63,7 @@ public class FeatureVector {
    
    //populate a feature vector with an individual row
    public void addRow(int req_no, String requirement, String[] triple, String[] tags, String[] types) {
+	   int int_vcat, int_vprocess;
 	   id.add(req_no);
 	   sentence.add(requirement);
 	   subject.add(triple[0]);
@@ -69,8 +72,17 @@ public class FeatureVector {
 	   stype.add(types[0]);
 	   verb.add(triple[1]);
 	   vtag.add(tags[2]);
-	   vcat.add(types[2]);
-	   vprocess.add(types[3]);
+	   try{
+		   int_vcat = Integer.parseInt(types[2]);
+		   int_vprocess = Integer.parseInt(types[3]);
+	   }catch(NumberFormatException nfex){
+		   int_vcat = 0;
+		   int_vprocess = 0;
+		   System.out.println("There was an error converting vcat and vprocess to Integer");
+		   nfex.printStackTrace();
+	   }
+	   vcat.add(int_vcat);
+	   vprocess.add(int_vprocess);
 	   object.add(triple[2]);
 	   otag.add(tags[3]);
 	   oner.add(tags[4]);
@@ -81,31 +93,24 @@ public class FeatureVector {
    //write Feature Vector to a csv file
    public void writeFV() {
 	   try{
-		   FileWriter csvWriter = new FileWriter("src/outputs/feature_vector.csv");
+		   String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		   FileWriter csvWriter = new FileWriter("src/outputs/FV_" + timestamp + ".csv");
 		   csvWriter.write("Req. No. | requirement | subject | s-tag | s-ner | s-type | verb | v-tag | vcat | vprocess | object | o-tag | o-ner | o-type | label \n");
 		   for(int i=0;i<id.size();i++){
-			   csvWriter.append(id.get(i).toString() + " | ");
-			   //csvWriter.append(" | ");
-			   csvWriter.append(sentence.get(i));
-			   csvWriter.append(" | ");
-			   csvWriter.append(subject.get(i));
-			   csvWriter.append(" | ");
-			   csvWriter.append(stag.get(i));
-			   csvWriter.append(" | ");
-			   csvWriter.append(sner.get(i));
-			   csvWriter.append(" | ");
-			   csvWriter.append(stype.get(i));
-			   csvWriter.append(" | ");
-			   csvWriter.append(verb.get(i));
-			   csvWriter.append(" | ");
-			   csvWriter.append(vtag.get(i));
-			   csvWriter.append(" | ");
-			   csvWriter.append(vcat.get(i) + " | ");
-			   csvWriter.append(vprocess.get(i) + " | ");
-			   csvWriter.append(object.get(i) + " | ");
-			   csvWriter.append(otag.get(i) + " | ");
-			   csvWriter.append(oner.get(i) + " | ");
-			   csvWriter.append(otype.get(i) + " | ");
+			   csvWriter.append(id.get(i).toString() + "|");
+			   csvWriter.append(sentence.get(i) + "|");
+			   csvWriter.append(subject.get(i) + "|");
+			   csvWriter.append(stag.get(i) + "|");
+			   csvWriter.append(sner.get(i) + "|");
+			   csvWriter.append(stype.get(i) + "|");
+			   csvWriter.append(verb.get(i) + "|");
+			   csvWriter.append(vtag.get(i) + "|");
+			   csvWriter.append(vcat.get(i).toString() + "|");
+			   csvWriter.append(vprocess.get(i).toString() + "|");
+			   csvWriter.append(object.get(i) + "|");
+			   csvWriter.append(otag.get(i) + "|");
+			   csvWriter.append(oner.get(i) + "|");
+			   csvWriter.append(otype.get(i) + "|");
 			   csvWriter.append(label.get(i) + "\n");
 		   }
 		   csvWriter.flush();
@@ -136,8 +141,8 @@ public class FeatureVector {
    public ArrayList<String> getStype(){ return stype; }
    public ArrayList<String> getVerb(){ return verb; }
    public ArrayList<String> getVtag(){ return vtag; }
-   public ArrayList<String> getVcat(){ return vcat; }
-   public ArrayList<String> getVprocess(){ return vprocess; }
+   public ArrayList<Integer> getVcat(){ return vcat; }
+   public ArrayList<Integer> getVprocess(){ return vprocess; }
    public ArrayList<String> getObject(){ return object; }
    public ArrayList<String> getOtag(){ return otag; }
    public ArrayList<String> getOner(){ return oner; }

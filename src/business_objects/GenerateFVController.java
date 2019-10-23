@@ -44,10 +44,10 @@ public class GenerateFVController {
 						fv = new FeatureVector();
 					}
 					fv.addRow(req_no, requirement,triple, tags, types);
-					fv.writeFV();
 				}
 				req_no+=1;
 			}
+			fv.writeFV();
 			msg = "The Feature Vector was generated successfully";
 		}catch(Exception ex){
 			msg = "There was an error generating the Feature Vector.";

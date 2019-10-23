@@ -1,6 +1,11 @@
 package business_objects;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import net.didion.jwnl.JWNL;
 import net.didion.jwnl.data.IndexWord;
@@ -15,7 +20,7 @@ public class WordNet {
 		
 	}
 	
-	public String[] getTypes(String[] triple) {
+	public String[] getTypes(String[] triple) throws IOException {
 		String stype = "";
 		String otype = "";
 		String vcat = "";
@@ -23,7 +28,9 @@ public class WordNet {
 		String subject = triple[0];
 		String verb = triple[1];
 		String object = triple[2];
-		String temp_verb = "";
+		
+		//determines if verb is a process
+		vprocess = findIfProcess(verb);
 		
 		// initialize JWNL (this must be done before JWNL can be used)
 		try {
@@ -32,35 +39,126 @@ public class WordNet {
 			ex.printStackTrace();
 		}
 		
-		//if verb does not already end with -ion, add -ion
-		if(!verb.endsWith("ion")) { temp_verb = verb+"ion"; }
-		
-		//check if verb is a valid word
-		if(isValidWord(temp_verb)) {
-			vprocess = "Y";
-			//System.out.println("Word: " + verb + " is Valid");
-		}else {
-			vprocess = "N";
-			//System.out.println("Word: " + verb + " is NOT Valid");
-		}
-		
 		//get stype and otype
 		stype = getWordType(subject);
-		//System.out.println("S-Type: " + stype);
 		otype = getWordType(object);
-		//System.out.println("O-Type: " + otype);
-
 		
-		//get vcat
-		//The V-cat needs to check with WordNet to see if the verb is one of the synonyms to one of the words on the list
-		vcat = "?";
+		//get vcat (determine if verb is transitive)
+		vcat = findIfTransitive(verb);
 		
 		String[] types = {stype, otype, vcat, vprocess};
 		return types;
 	}
 	
-	private String getWordType(String word){
-		String type = "";
+	private String findIfProcess(String verb) {
+		String vprocess = "0";
+		String result;
+		String[] sp_result;
+		String temp_verb;
+		String[] verb_words = verb.split(" ");
+		
+		if(verb_words.length>=2) {
+			temp_verb = verb_words[1];
+			//System.out.println(temp_verb);
+		}else {
+			temp_verb = verb;
+		}
+		
+		try {
+			result = getDerived(temp_verb);
+			sp_result = result.replace(",", "").split(" ");
+			for(String token : sp_result) {
+				if(token.compareTo(" ")!=0 || !token.isEmpty()) {
+					if(token.startsWith(temp_verb.substring(0, 3)) && token.endsWith("ion")) {
+							//System.out.println(token);
+							vprocess = "1";
+					}
+				}
+			}
+		}catch(IOException ioex){
+			System.out.println("Error executing WordNet Command");
+			ioex.printStackTrace();
+		}catch(Exception ex){
+			System.out.println("Error executing WordNet Command");
+			ex.printStackTrace();
+		}
+		return vprocess;
+	}
+	
+	private String findIfTransitive(String verb) {
+		String vcat = "0";
+		String temp_verb;
+		boolean result;
+		String[] verb_words = verb.split(" ");
+		
+		if(verb_words.length>=2) {
+			temp_verb = verb_words[1];
+			//System.out.println(temp_verb);
+		}else {
+			temp_verb = verb;
+		}
+		
+		try{
+			result = getFrames(temp_verb);
+			if(result){ vcat = "1"; }
+		}catch(IOException ioex){
+			System.out.println("Error executing WordNet Command");
+			ioex.printStackTrace();
+		}catch(Exception ex){
+			System.out.println("Error executing WordNet Command");
+			ex.printStackTrace();
+		}
+		return vcat;
+	}
+	
+	private String getDerived(String word) throws IOException {
+		String line = null;
+		String result = "";
+		List<String> command = new ArrayList<String>();
+		command.add("D:\\Program Files/WordNet/2.1/bin/wn.exe");
+		command.add(word);
+		command.add("-deriv");
+		
+		ProcessBuilder pb = new ProcessBuilder(command);
+		Process p = pb.start();
+		BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		while((line = br.readLine()) != null) {
+			result+=line;
+			//System.out.println(line);
+		}
+		
+		return result;
+	}
+	
+	private boolean getFrames(String word) throws IOException {
+		String line = null;
+		String[] tokens;
+		boolean size_check = true;
+		List<String> command = new ArrayList<String>();
+		command.add("D:\\Program Files/WordNet/2.1/bin/wn.exe");
+		command.add(word);
+		command.add("-framv");
+		
+		ProcessBuilder pb = new ProcessBuilder(command);
+		Process p = pb.start();
+		BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		while((line = br.readLine()) != null && size_check) {
+			if(!line.isEmpty()) {
+				if(line.contains("*>")) { 
+					if(line.contains("----ing")) { tokens = line.split("----ing"); }
+					else { tokens = line.split("----s"); }
+					if(tokens.length!=2) {
+						size_check = false;
+					}
+					//System.out.println(line);
+				}
+			}
+		}
+		return size_check;
+	}	
+	
+	private String getWordType(String word) {
+		String type = "";		
 		try {
 			IndexWord iword = Dictionary.getInstance().lookupIndexWord(POS.NOUN, word);
 			if(iword!=null) {
@@ -72,64 +170,9 @@ public class WordNet {
 		return type;
 	}
 	
-	private boolean isValidWord(String word) {
-		boolean isWord = false;
-		try {
-			IndexWord iword = Dictionary.getInstance().lookupIndexWord(POS.VERB, word); //attempt to look up word as verb
-			if( iword != null ) { //if return value is not null then it is a word
-				isWord = true; 
-			}else{ //attempt to look up word as noun
-				iword = Dictionary.getInstance().lookupIndexWord(POS.NOUN, word);
-				if( iword != null ) { //if return value is not null then it is a word
-					isWord = true; 
-				}
-			}
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		return isWord;
-	}
-	
-	/**
-	* @return All synsets for the given word and POS category.
-	*/
-	/*private Synset[] synsetsOf(String token, POS postag) {
-		try {
-			IndexWord iword = Dictionary.getInstance().lookupIndexWord(postag, token);
-			if( iword != null ) {
-	    		Synset[] synsets = iword.getSenses();
-	    		return synsets;
-	    	}
-		} catch( Exception ex ) { 
-			ex.printStackTrace(); 
-		}
-		return null;
-	}*/
-	
-	/*private List<String> synonymOf(String token) {
-	    POS pos = POS.VERB;	    
-	    // Get the synsets.
-	    Synset[] synsets = synsetsOf(token.substring(2), pos);
-	    List<String> synonyms = new ArrayList<String>();
-	    System.out.println(synsets.toString());
-	    
-	    if( synsets != null ) {
-	      for( Synset synset : synsets ) {
-	        List<String> syms = _wordnet.wordsInSynset(synset);
-//	        System.out.println("  token " + token + " synset " + synset + ": " + syms);
-	        for( String sym : syms ) {
-	          String strtoken = header + sym;
-	          if( !synonyms.contains(strtoken) )
-	            synonyms.add(strtoken);
-	        }
-	      }
-	    }
-	    return synonyms;
-	}*/
-	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 	      WordNet wn = new WordNet();
-	      String[] triple = {"user", "retrieve", "ATM"};
+	      String[] triple = {"user", "construct", "diagram"};
 	      wn.getTypes(triple);
 	}
 	

@@ -2,3 +2,4 @@ ATM shall allow a customer to deposit funds.
 The system shall allow the user to withdraw funds.
 The system shall allow the user to check balances.
 The system shall allow the user to print statements.
+The system shall allow the user to construct diagrams.
