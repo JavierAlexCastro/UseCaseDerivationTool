@@ -1,0 +1,443 @@
+@relation vectors26_test
+
+@attribute Subject {system,it,data,sharing,program,agreements,standards,Resources,A-130,Standards,providers,maintenance,personnel,community,management,provider,CDN,product,remove,peering,crowds,replication,research,Peering,condition,increases,relationships,instance,PA,System,protocols,information,CDNs,functions,s,host,policies,ensures,delegation,conjunction,terms,algorithms,Mediator,resources,entities,arrangement,rols,content,decision,traffic,Registry,servers,access,Repository,Agent,requirements,negotiations,distribution,redirection,assignment,â,Server,registry}
+@attribute S-TAG {NN,PRP,NNS,VBG,NNP,NNPS,VB,VBZ,VBP}
+@attribute S-NER {O,TITLE,ORGANIZATION,MISC}
+@attribute S-Type {'abstract entity',null,'physical entity'}
+@attribute Verb {use,for,have,shall,mitigate,from,publish,collects,at,prioritize,support,becoming,within,collect,complete,to,handle,accept,with,establish,sharing,maintain,provide,define,accommodate,test,operate,in,of,null,about,â,peering,CDN,remove,enabling,allow,on,determining,be,requires,share,allows,through,achieve,consider,specify,identifies,passes,discover,performs,predicting,configure,participating,regarding,enables,exchange,do,improving,decrease,reduce,is,initiates,In,ensures,under,are,perform,between,as,generates,encapsulates,discovering,register,supplies,provides,establishing,acquire,by,using,assist,serving,disseminating,publishes,registers}
+@attribute V-TAG {VB,IN,MD,VBZ,VBG,TO,NN,null,VBP}
+@attribute V-CAT {transitive,null,intransitive}
+@attribute V-Process {N,Y,null}
+@attribute Object {longitude,timestamps,minimum,administrator,able,attacks,shutdown,data,it,rate,handling,observations,available,sources,minutes,them,receipt,seconds,check,request,minute,information,requests,users,operations,environment,tools,support,service,staff,methods,criteria,rules,standards,documentation,system,technologies,contributions,delivery,Plan,A-130,Resources,requirements,Management,outlined,Institute,NIST,Standards,B,providers,network,metadata,restrictions,communications,access,€,assists,CDNs,resources,CDN,peering,internetworking,need,demand,â,compensation,participants,undertaken,research,s,scale/reach,sharing,increases,entities,administration,interactions,relationships,coordination,activities,roles,PA,peers,process,performance,protocols,participating,availability,validation,load,cost,server,replicates,event,trigger,hotspot,content,end-users,host,permitted,policies,agent,mediator,SLA-allocator,enforced,caching,selection,serversâ,servers,basis,PA.,conjunction,established,there,replicated,taken,redirected,resource,details,created,arrangement,administer,set,module,negotiations,PAs,used,conduit,approach,others,performed,DNS,clusters,cluster,levels,gateways,SR.,provider}
+@attribute O-TAG {NN,NNS,JJ,PRP,VBG,NNP,VBN,NNPS,$,VBZ,VB,RB}
+@attribute O-NER {O,TITLE,CAUSE_OF_DEATH,DURATION,ORGANIZATION,MONEY,MISC,STATE_OR_PROVINCE}
+@attribute O-Type {'abstract entity',null,'physical entity'}
+@attribute label numeric
+
+@data
+system,NN,O,'abstract entity',use,VB,transitive,N,longitude,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',for,IN,null,N,timestamps,NNS,O,null,0
+system,NN,TITLE,'abstract entity',have,VB,transitive,N,minimum,NN,O,'abstract entity',0
+system,NN,TITLE,'abstract entity',have,VB,transitive,N,administrator,NN,TITLE,'physical entity',0
+system,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+system,NN,O,'abstract entity',mitigate,VB,transitive,Y,attacks,NNS,CAUSE_OF_DEATH,'abstract entity',1
+system,NN,O,'abstract entity',mitigate,VB,transitive,Y,attacks,NNS,CAUSE_OF_DEATH,'abstract entity',1
+system,NN,O,'abstract entity',from,IN,null,N,shutdown,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',from,IN,null,N,shutdown,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+system,NN,O,'abstract entity',from,IN,null,N,shutdown,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',from,IN,null,N,shutdown,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+system,NN,O,'abstract entity',publish,VB,transitive,Y,data,NNS,O,'abstract entity',1
+system,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+it,PRP,O,'abstract entity',collects,VBZ,transitive,Y,it,PRP,O,'abstract entity',0
+system,NN,O,'abstract entity',at,IN,null,N,rate,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',publish,VB,transitive,Y,data,NNS,O,'abstract entity',1
+system,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+system,NN,O,'abstract entity',prioritize,VB,transitive,N,data,NNS,O,'abstract entity',0
+system,NN,O,'abstract entity',prioritize,VB,transitive,N,data,NNS,O,'abstract entity',0
+system,NN,O,'abstract entity',prioritize,VB,transitive,N,handling,VBG,O,'abstract entity',0
+system,NN,O,'abstract entity',prioritize,VB,transitive,N,data,NNS,O,'abstract entity',0
+system,NN,O,'abstract entity',support,VB,transitive,N,observations,NNS,O,'abstract entity',0
+system,NN,O,'abstract entity',support,VB,transitive,N,observations,NNS,O,'abstract entity',0
+data,NNS,O,'abstract entity',becoming,VBG,intransitive,N,available,JJ,O,null,0
+system,NN,O,'abstract entity',from,IN,null,N,sources,NNS,O,'physical entity',0
+system,NN,O,'abstract entity',within,IN,null,N,minutes,NNS,DURATION,'abstract entity',0
+system,NN,O,'abstract entity',collect,VB,transitive,Y,data,NNS,O,'abstract entity',1
+system,NN,O,'abstract entity',within,IN,null,N,them,PRP,O,null,0
+system,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+system,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+system,NN,O,'abstract entity',within,IN,null,N,receipt,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',complete,VB,transitive,Y,data,NNS,O,'abstract entity',1
+system,NN,O,'abstract entity',complete,VB,transitive,Y,data,NNS,O,'abstract entity',1
+system,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+system,NN,O,'abstract entity',complete,VB,transitive,Y,data,NNS,O,'abstract entity',1
+system,NN,O,'abstract entity',within,IN,null,N,seconds,NNS,DURATION,'abstract entity',0
+system,NN,O,'abstract entity',complete,VB,transitive,Y,check,NN,O,'abstract entity',1
+system,NN,O,'abstract entity',complete,VB,transitive,Y,data,NNS,O,'abstract entity',1
+system,NN,O,'abstract entity',complete,VB,transitive,Y,check,NN,O,'abstract entity',1
+system,NN,O,'abstract entity',publish,VB,transitive,Y,data,NNS,O,'abstract entity',1
+system,NN,O,'abstract entity',publish,VB,transitive,Y,data,NNS,O,'abstract entity',1
+system,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+system,NN,O,'abstract entity',within,IN,null,N,receipt,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',within,IN,null,N,minutes,NNS,DURATION,'abstract entity',0
+system,NN,O,'abstract entity',to,TO,null,N,request,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',to,TO,null,N,minute,NN,DURATION,'abstract entity',0
+system,NN,O,'abstract entity',to,TO,null,N,minute,NN,DURATION,'abstract entity',0
+system,NN,O,'abstract entity',to,TO,null,N,information,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',handle,VB,transitive,N,data,NNS,O,'abstract entity',0
+system,NN,O,'abstract entity',handle,VB,transitive,N,data,NNS,O,'abstract entity',0
+system,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+system,NN,O,'abstract entity',handle,VB,transitive,N,data,NNS,O,'abstract entity',0
+system,NN,O,'abstract entity',handle,VB,transitive,N,requests,NNS,O,'abstract entity',1
+system,NN,O,'abstract entity',handle,VB,transitive,N,requests,NNS,O,'abstract entity',1
+system,NN,O,'abstract entity',handle,VB,transitive,N,data,NNS,O,'abstract entity',0
+system,NN,O,'abstract entity',support,VB,transitive,N,users,NNS,O,'physical entity',0
+system,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+system,NN,O,'abstract entity',support,VB,transitive,N,users,NNS,O,'physical entity',0
+system,NN,O,'abstract entity',support,VB,transitive,N,users,NNS,O,'physical entity',0
+system,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+system,NN,O,'abstract entity',support,VB,transitive,N,users,NNS,O,'physical entity',0
+system,NN,O,'abstract entity',from,IN,null,N,sources,NNS,O,'physical entity',0
+system,NN,O,'abstract entity',from,IN,null,N,sources,NNS,O,'physical entity',0
+system,NN,O,'abstract entity',from,IN,null,N,sources,NNS,O,'physical entity',0
+system,NN,O,'abstract entity',accept,VB,transitive,Y,data,NNS,O,'abstract entity',1
+system,NN,O,'abstract entity',from,IN,null,N,sources,NNS,O,'physical entity',0
+sharing,VBG,O,'abstract entity',with,IN,null,N,data,NNS,O,'abstract entity',0
+program,NN,O,'abstract entity',establish,VB,transitive,N,data,NNS,O,'abstract entity',1
+data,NNS,O,'abstract entity',sharing,VBG,intransitive,N,data,NNS,O,'abstract entity',0
+agreements,NNS,O,'abstract entity',with,IN,null,N,data,NNS,O,'abstract entity',0
+program,NN,O,'abstract entity',maintain,VB,transitive,N,operations,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,operations,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,operations,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,operations,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',provide,VB,transitive,Y,environment,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',provide,VB,transitive,Y,environment,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',provide,VB,transitive,Y,tools,NNS,O,'physical entity',1
+program,NN,O,'abstract entity',provide,VB,transitive,Y,support,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',for,IN,null,N,service,NN,O,'abstract entity',0
+program,NN,O,'abstract entity',provide,VB,transitive,Y,staff,NN,O,'abstract entity',0
+program,NN,O,'abstract entity',provide,VB,transitive,Y,staff,NN,O,'abstract entity',0
+program,NN,O,'abstract entity',define,VB,transitive,Y,methods,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',define,VB,transitive,Y,criteria,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',define,VB,transitive,Y,observations,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',define,VB,transitive,Y,observations,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',define,VB,transitive,Y,rules,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',define,VB,transitive,Y,standards,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',provide,VB,transitive,Y,documentation,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',provide,VB,transitive,Y,standards,NNS,O,'abstract entity',1
+standards,NNS,O,'abstract entity',accommodate,VB,transitive,Y,system,NN,O,'abstract entity',0
+standards,NNS,O,'abstract entity',accommodate,VB,transitive,Y,technologies,NNS,O,'abstract entity',0
+standards,NNS,O,'abstract entity',accommodate,VB,transitive,Y,system,NN,O,'abstract entity',0
+standards,NNS,O,'abstract entity',accommodate,VB,transitive,Y,system,NN,O,'abstract entity',0
+standards,NNS,O,'abstract entity',accommodate,VB,transitive,Y,contributions,NNS,O,'abstract entity',0
+standards,NNS,O,'abstract entity',accommodate,VB,transitive,Y,technologies,NNS,O,'abstract entity',0
+standards,NNS,O,'abstract entity',support,VB,transitive,N,methods,NNS,O,'abstract entity',0
+standards,NNS,O,'abstract entity',support,VB,transitive,N,delivery,NN,O,'abstract entity',1
+standards,NNS,O,'abstract entity',support,VB,transitive,N,delivery,NN,O,'abstract entity',1
+standards,NNS,O,'abstract entity',support,VB,transitive,N,methods,NNS,O,'abstract entity',0
+standards,NNS,O,'abstract entity',to,TO,null,N,users,NNS,O,'physical entity',0
+program,NN,O,'abstract entity',maintain,VB,transitive,N,environment,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,environment,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',test,NN,transitive,N,environment,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',test,NN,transitive,N,environment,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',to,TO,null,N,Plan,NNP,O,'abstract entity',0
+program,NN,O,'abstract entity',to,TO,null,N,Plan,NNP,O,'abstract entity',0
+program,NN,O,'abstract entity',operate,VB,intransitive,Y,system,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',to,TO,null,N,Plan,NNP,O,'abstract entity',0
+program,NN,O,'abstract entity',to,TO,null,N,Plan,NNP,O,'abstract entity',0
+program,NN,O,'abstract entity',in,IN,null,N,A-130,NN,O,null,0
+program,NN,O,'abstract entity',in,IN,null,N,A-130,NN,O,null,0
+program,NN,O,'abstract entity',operate,VB,intransitive,Y,A-130,NN,O,null,0
+Resources,NNP,ORGANIZATION,'abstract entity',of,IN,null,N,Resources,NNP,ORGANIZATION,'abstract entity',0
+program,NN,O,'abstract entity',to,TO,null,N,requirements,NNS,O,'abstract entity',0
+program,NN,O,'abstract entity',in,IN,null,N,Management,NN,O,'abstract entity',0
+A-130,NN,O,null,of,IN,null,N,Resources,NNP,ORGANIZATION,'abstract entity',0
+program,NN,O,'abstract entity',operate,VB,intransitive,Y,outlined,VBN,O,null,0
+program,NN,O,'abstract entity',operate,VB,intransitive,Y,A-130,NN,O,null,0
+program,NN,O,'abstract entity',in,IN,null,N,Resources,NNP,ORGANIZATION,'abstract entity',0
+program,NN,O,'abstract entity',to,TO,null,N,requirements,NNS,O,'abstract entity',0
+program,NN,O,'abstract entity',operate,VB,intransitive,Y,Institute,NNP,ORGANIZATION,'abstract entity',1
+program,NN,O,'abstract entity',in,IN,null,N,NIST,NNP,ORGANIZATION,'abstract entity',0
+Standards,NNPS,ORGANIZATION,'abstract entity',null,null,null,null,NIST,NNP,ORGANIZATION,'abstract entity',0
+program,NN,O,'abstract entity',in,IN,null,N,Institute,NNP,ORGANIZATION,'abstract entity',0
+program,NN,O,'abstract entity',operate,VB,intransitive,Y,outlined,VBN,O,null,0
+program,NN,O,'abstract entity',in,IN,null,N,Standards,NNPS,ORGANIZATION,'abstract entity',0
+program,NN,O,'abstract entity',operate,VB,intransitive,Y,Standards,NNPS,ORGANIZATION,'abstract entity',0
+program,NN,O,'abstract entity',in,IN,null,N,B,NN,O,'physical entity',0
+program,NN,O,'abstract entity',operate,VB,intransitive,Y,outlined,VBN,O,null,0
+program,NN,O,'abstract entity',operate,VB,intransitive,Y,B,NN,O,'physical entity',0
+program,NN,O,'abstract entity',to,TO,null,N,requirements,NNS,O,'abstract entity',0
+providers,NNS,O,'physical entity',use,VB,transitive,N,data,NNS,O,'abstract entity',1
+providers,NNS,O,'physical entity',shall,MD,null,N,able,JJ,O,null,0
+maintenance,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+personnel,NNS,O,'abstract entity',use,VB,transitive,N,system,NN,O,'abstract entity',1
+personnel,NNS,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+personnel,NNS,O,'abstract entity',use,VB,transitive,N,system,NN,O,'abstract entity',1
+personnel,NNS,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+personnel,NNS,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+personnel,NNS,O,'abstract entity',use,VB,transitive,N,system,NN,O,'abstract entity',1
+personnel,NNS,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+personnel,NNS,O,'abstract entity',use,VB,transitive,N,system,NN,O,'abstract entity',1
+community,NN,O,'abstract entity',use,VB,transitive,N,system,NN,O,'abstract entity',1
+community,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+personnel,NNS,O,'abstract entity',use,VB,transitive,N,system,NN,O,'abstract entity',1
+personnel,NNS,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+management,NN,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+personnel,NNS,O,'abstract entity',shall,MD,null,N,able,JJ,O,null,0
+personnel,NNS,O,'abstract entity',use,VB,transitive,N,system,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,providers,NNS,O,'physical entity',0
+program,NN,O,'abstract entity',maintain,VB,transitive,N,information,NN,O,'abstract entity',1
+provider,NN,O,'physical entity',about,IN,null,N,network,NN,O,'abstract entity',0
+program,NN,O,'abstract entity',maintain,VB,transitive,N,network,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,metadata,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,network,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,restrictions,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,information,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,providers,NNS,O,'physical entity',0
+program,NN,O,'abstract entity',maintain,VB,transitive,N,information,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,communications,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,information,NN,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,data,NNS,O,'abstract entity',1
+program,NN,O,'abstract entity',maintain,VB,transitive,N,access,NN,O,'abstract entity',0
+program,NN,O,'abstract entity',maintain,VB,transitive,N,information,NN,O,'abstract entity',1
+providers,NNS,O,'physical entity',â,VB,null,N,€,$,MONEY,null,0
+CDN,NN,MISC,null,peering,VBG,transitive,N,assists,VBZ,O,'abstract entity',0
+product,NN,O,'physical entity',CDN,NN,null,N,CDNs,NNS,O,null,0
+remove,VB,O,'abstract entity',for,IN,null,N,resources,NNS,O,'abstract entity',0
+program,NN,O,'abstract entity',remove,VB,transitive,Y,CDN,NN,MISC,null,0
+remove,VB,O,'abstract entity',for,IN,null,N,CDN,NN,MISC,null,0
+program,NN,O,'abstract entity',remove,VB,transitive,Y,resources,NNS,O,'abstract entity',1
+product,NN,O,'physical entity',enabling,VBG,transitive,N,peering,VBG,O,null,1
+product,NN,O,'physical entity',CDN,NN,null,N,CDNs,NNS,O,null,0
+product,NN,O,'physical entity',CDN,NN,null,N,internetworking,VBG,O,null,0
+program,NN,O,'abstract entity',remove,VB,transitive,Y,CDN,NN,MISC,null,0
+CDN,NN,MISC,null,peering,VBG,transitive,N,delivery,NN,O,'abstract entity',0
+remove,VB,O,'abstract entity',for,IN,null,N,resources,NNS,O,'abstract entity',0
+program,NN,O,'abstract entity',allow,VB,transitive,N,providers,NNS,O,'physical entity',0
+product,NN,O,'physical entity',CDN,NN,null,N,internetworking,VBG,O,null,0
+product,NN,O,'physical entity',enabling,VBG,transitive,N,peering,VBG,O,null,1
+remove,VB,O,'abstract entity',for,IN,null,N,CDN,NN,MISC,null,0
+product,NN,O,'physical entity',enabling,VBG,transitive,N,CDN,NN,MISC,null,0
+program,NN,O,'abstract entity',remove,VB,transitive,Y,resources,NNS,O,'abstract entity',1
+product,NN,O,'physical entity',enabling,VBG,transitive,N,CDN,NN,MISC,null,0
+providers,NNS,O,'physical entity',â,VB,null,N,€,$,MONEY,null,0
+product,NN,O,'physical entity',CDN,NN,null,N,CDNs,NNS,O,null,0
+product,NN,O,'physical entity',CDN,NN,null,N,CDNs,NNS,O,null,0
+peering,VBG,O,null,in,IN,null,N,delivery,NN,O,'abstract entity',0
+program,NN,O,'abstract entity',remove,VB,transitive,Y,need,NN,O,'abstract entity',0
+crowds,NNS,O,'abstract entity',in,IN,null,N,demand,NN,O,'physical entity',0
+CDN,NN,MISC,null,peering,VBG,transitive,N,delivery,NN,O,'abstract entity',0
+peering,VBG,O,null,in,IN,null,N,delivery,NN,O,'abstract entity',0
+replication,NN,O,'abstract entity',on,IN,null,N,â,NN,O,null,0
+replication,NN,O,'abstract entity',determining,VBG,transitive,Y,compensation,NN,O,'abstract entity',0
+replication,NN,O,'abstract entity',determining,VBG,transitive,Y,participants,NNS,O,'physical entity',0
+research,NN,O,'abstract entity',be,VB,intransitive,N,undertaken,VBN,O,null,0
+replication,NN,O,'abstract entity',determining,VBG,transitive,Y,compensation,NN,O,'abstract entity',0
+replication,NN,O,'abstract entity',determining,VBG,transitive,Y,participants,NNS,O,'physical entity',0
+replication,NN,O,'abstract entity',on,IN,null,N,â,NN,O,null,0
+peering,VBG,O,null,requires,VBZ,transitive,Y,research,NN,O,'abstract entity',0
+peering,VBG,O,null,requires,VBZ,transitive,Y,research,NN,O,'abstract entity',0
+research,NN,O,'abstract entity',be,VB,intransitive,N,undertaken,VBN,O,null,0
+replication,NN,O,'abstract entity',on,IN,null,N,â,NN,O,null,0
+providers,NNS,O,'physical entity',share,VB,intransitive,N,resources,NNS,O,'abstract entity',1
+providers,NNS,O,'physical entity',share,VB,intransitive,N,resources,NNS,O,'abstract entity',1
+CDN,NN,O,null,allows,VBZ,transitive,N,providers,NNS,O,'physical entity',0
+CDN,NN,O,null,allows,VBZ,transitive,N,providers,NNS,O,'physical entity',0
+CDN,NN,O,null,through,IN,null,N,s,NNS,O,'abstract entity',0
+CDN,NN,O,null,achieve,VB,transitive,N,scale/reach,NN,O,null,0
+sharing,NN,O,'abstract entity',with,IN,null,N,s,NNS,O,'abstract entity',0
+CDN,NN,O,null,through,IN,null,N,sharing,NN,O,'abstract entity',0
+CDN,NN,O,null,achieve,VB,transitive,N,scale/reach,NN,O,null,0
+CDN,NN,O,null,achieve,VB,transitive,N,scale/reach,NN,O,null,0
+CDN,NN,O,null,through,IN,null,N,s,NNS,O,'abstract entity',0
+Peering,VBG,O,null,allows,VBZ,transitive,N,CDN,NN,O,null,0
+CDN,NN,O,null,achieve,VB,transitive,N,scale/reach,NN,O,null,0
+Peering,VBG,O,null,allows,VBZ,transitive,N,CDN,NN,O,null,0
+CDN,NN,O,null,through,IN,null,N,sharing,NN,O,'abstract entity',0
+CDN,NN,O,null,through,IN,null,N,s,NNS,O,'abstract entity',0
+CDN,NN,O,null,through,IN,null,N,s,NNS,O,'abstract entity',0
+condition,NN,O,'abstract entity',consider,VB,transitive,Y,CDN,NN,O,null,0
+condition,NN,O,'abstract entity',consider,VB,transitive,Y,CDN,NN,O,null,0
+increases,NNS,O,'abstract entity',in,IN,null,N,CDN,NN,O,null,0
+condition,NN,O,'abstract entity',consider,VB,transitive,Y,CDN,NN,O,null,0
+condition,NN,O,'abstract entity',consider,VB,transitive,Y,CDN,NN,O,null,0
+condition,NN,O,'abstract entity',consider,VB,transitive,Y,CDN,NN,O,null,0
+condition,NN,O,'abstract entity',consider,VB,transitive,Y,increases,NNS,O,'abstract entity',0
+condition,NN,O,'abstract entity',consider,VB,transitive,Y,increases,NNS,O,'abstract entity',0
+condition,NN,O,'abstract entity',consider,VB,transitive,Y,increases,NNS,O,'abstract entity',0
+condition,NN,O,'abstract entity',consider,VB,transitive,Y,CDN,NN,O,null,0
+condition,NN,O,'abstract entity',consider,VB,transitive,Y,CDN,NN,O,null,0
+condition,NN,O,'abstract entity',consider,VB,transitive,Y,CDN,NN,O,null,0
+condition,NN,O,'abstract entity',consider,VB,transitive,Y,increases,NNS,O,'abstract entity',0
+relationships,NNS,O,'abstract entity',specify,VB,intransitive,Y,entities,NNS,O,null,0
+relationships,NNS,O,'abstract entity',specify,VB,intransitive,Y,administration,NN,O,'abstract entity',0
+relationships,NNS,O,'abstract entity',specify,VB,intransitive,Y,administration,NN,O,'abstract entity',0
+relationships,NNS,O,'abstract entity',specify,VB,intransitive,Y,interactions,NNS,O,'abstract entity',0
+relationships,NNS,O,'abstract entity',specify,VB,intransitive,Y,entities,NNS,O,null,0
+relationships,NNS,O,'abstract entity',specify,VB,intransitive,Y,interactions,NNS,O,'abstract entity',0
+CDN,NN,O,null,through,IN,null,N,relationships,NNS,O,'abstract entity',0
+CDN,NN,O,null,through,IN,null,N,coordination,NN,O,'abstract entity',0
+CDN,NN,O,null,through,IN,null,N,relationships,NNS,O,'abstract entity',0
+CDN,NN,O,null,through,IN,null,N,relationships,NNS,O,'abstract entity',0
+CDN,NN,O,null,identifies,VBZ,intransitive,Y,activities,NNS,O,'abstract entity',1
+CDN,NN,O,null,through,IN,null,N,coordination,NN,O,'abstract entity',0
+CDN,NN,O,null,identifies,VBZ,intransitive,Y,activities,NNS,O,'abstract entity',1
+CDN,NN,O,null,identifies,VBZ,intransitive,Y,roles,NNS,O,'abstract entity',1
+CDN,NN,O,null,identifies,VBZ,intransitive,Y,activities,NNS,O,'abstract entity',1
+CDN,NN,O,null,identifies,VBZ,intransitive,Y,roles,NNS,O,'abstract entity',1
+CDN,NN,O,null,through,IN,null,N,coordination,NN,O,'abstract entity',0
+CDN,NN,O,null,identifies,VBZ,intransitive,Y,activities,NNS,O,'abstract entity',1
+CDN,NN,O,null,through,IN,null,N,coordination,NN,O,'abstract entity',0
+CDN,NN,O,null,identifies,VBZ,intransitive,Y,roles,NNS,O,'abstract entity',1
+CDN,NN,O,null,identifies,VBZ,intransitive,Y,roles,NNS,O,'abstract entity',1
+CDN,NN,O,null,through,IN,null,N,relationships,NNS,O,'abstract entity',0
+instance,NN,O,'abstract entity',passes,VBZ,intransitive,N,requirements,NNS,O,'abstract entity',0
+instance,NN,O,'abstract entity',discover,VB,transitive,N,resources,NNS,O,'abstract entity',0
+instance,NN,O,'abstract entity',discover,VB,transitive,N,resources,NNS,O,'abstract entity',0
+instance,NN,O,'abstract entity',to,TO,null,N,PA,NN,STATE_OR_PROVINCE,'physical entity',0
+instance,NN,O,'abstract entity',from,IN,null,N,peers,NNS,O,'physical entity',0
+instance,NN,O,'abstract entity',to,TO,null,N,PA,NN,STATE_OR_PROVINCE,'physical entity',0
+PA,NN,ORGANIZATION,'physical entity',performs,VBZ,intransitive,N,process,NN,O,'abstract entity',1
+PA,NN,ORGANIZATION,'physical entity',predicting,VBG,transitive,Y,peers,NNS,O,'physical entity',0
+PA,NN,ORGANIZATION,'physical entity',predicting,VBG,transitive,Y,performance,NN,O,'abstract entity',0
+System,NNP,MISC,'abstract entity',configure,VB,transitive,Y,protocols,NNS,O,'abstract entity',1
+System,NNP,MISC,'abstract entity',configure,VB,transitive,Y,protocols,NNS,O,'abstract entity',1
+protocols,NNS,O,'abstract entity',participating,VBG,intransitive,Y,CDNs,NNS,O,null,0
+protocols,NNS,O,'abstract entity',allow,VBP,transitive,N,participating,VBG,O,null,0
+information,NN,O,'abstract entity',regarding,VBG,transitive,N,availability,NN,O,'abstract entity',0
+protocols,NNS,O,'abstract entity',allow,VBP,transitive,N,participating,VBG,O,null,0
+information,NN,O,'abstract entity',regarding,VBG,transitive,N,availability,NN,O,'abstract entity',0
+Peering,VBG,O,null,enables,VBZ,transitive,N,CDNs,NNS,O,null,1
+CDNs,NNS,O,null,exchange,NN,intransitive,N,information,NN,O,'abstract entity',1
+Peering,VBG,O,null,enables,VBZ,transitive,N,CDNs,NNS,O,null,1
+system,NN,O,'abstract entity',do,VBP,intransitive,N,validation,NN,O,'abstract entity',1
+system,NN,O,'abstract entity',do,VBP,intransitive,N,peering,VBG,O,null,1
+system,NN,O,'abstract entity',improving,VBG,transitive,N,performance,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',of,IN,null,N,access,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',decrease,NN,intransitive,N,access,NN,O,'abstract entity',1
+system,NN,O,'abstract entity',improving,VBG,transitive,N,delivery,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',reduce,VB,intransitive,Y,load,NN,O,'physical entity',0
+system,NN,O,'abstract entity',decrease,NN,intransitive,N,cost,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',improving,VBG,transitive,N,performance,NN,O,'abstract entity',0
+system,NN,O,'abstract entity',improving,VBG,transitive,N,delivery,NN,O,'abstract entity',0
+functions,NNS,O,'abstract entity',is,VBZ,intransitive,N,server,NN,O,'physical entity',0
+s,NNS,O,'abstract entity',is,VBZ,intransitive,N,replicates,VBZ,O,null,0
+s,NNS,O,'abstract entity',is,VBZ,intransitive,N,server,NN,O,'physical entity',0
+functions,NNS,O,'abstract entity',is,VBZ,intransitive,N,replicates,VBZ,O,null,0
+s,NNS,O,'abstract entity',is,VBZ,intransitive,N,event,NN,O,'abstract entity',0
+it,PRP,O,'abstract entity',initiates,VBZ,transitive,Y,trigger,VB,O,'physical entity',0
+functions,NNS,O,'abstract entity',In,IN,null,N,hotspot,NN,O,'physical entity',0
+s,NNS,O,'abstract entity',is,VBZ,intransitive,N,hotspot,NN,O,'physical entity',0
+functions,NNS,O,'abstract entity',In,IN,null,N,event,NN,O,'abstract entity',0
+host,NN,TITLE,'physical entity',ensures,VBZ,transitive,N,content,NN,O,'abstract entity',0
+policies,NNS,O,'abstract entity',with,IN,null,N,CDNs,NNS,O,null,0
+ensures,VBZ,O,null,to,TO,null,N,end-users,NNS,O,'physical entity',0
+host,NN,TITLE,'physical entity',ensures,VBZ,transitive,N,delivery,NN,O,'abstract entity',0
+host,NN,TITLE,'physical entity',ensures,VBZ,transitive,N,end-users,NNS,O,'physical entity',0
+functions,NNS,O,'abstract entity',is,VBZ,intransitive,N,host,NN,TITLE,'physical entity',0
+ensures,VBZ,O,null,of,IN,null,N,content,NN,O,'abstract entity',0
+host,NN,TITLE,'physical entity',ensures,VBZ,transitive,N,end-users,NNS,O,'physical entity',0
+s,NNS,O,'abstract entity',is,VBZ,intransitive,N,host,NN,TITLE,'physical entity',0
+delegation,NN,O,'abstract entity',is,VBZ,intransitive,N,permitted,VBN,O,null,0
+delegation,NN,O,'abstract entity',under,IN,null,N,policies,NNS,O,'abstract entity',0
+s,NNS,O,'abstract entity',is,VBZ,intransitive,N,agent,NN,O,'physical entity',0
+conjunction,NN,O,'abstract entity',with,IN,null,N,mediator,NN,TITLE,'physical entity',0
+functions,NNS,O,'abstract entity',is,VBZ,intransitive,N,agent,NN,O,'physical entity',0
+functions,NNS,O,'abstract entity',is,VBZ,intransitive,N,SLA-allocator,NN,MISC,null,0
+s,NNS,O,'abstract entity',is,VBZ,intransitive,N,SLA-allocator,NN,MISC,null,0
+terms,NNS,O,'abstract entity',are,VBP,intransitive,N,enforced,VBN,O,null,0
+algorithms,NNS,O,'abstract entity',perform,VB,intransitive,N,caching,NN,O,null,1
+algorithms,NNS,O,'abstract entity',perform,VB,intransitive,N,selection,NN,O,'abstract entity',1
+algorithms,NNS,O,'abstract entity',perform,VB,intransitive,N,selection,NN,O,'abstract entity',1
+algorithms,NNS,O,'abstract entity',perform,VB,intransitive,N,selection,NN,O,'abstract entity',1
+functions,NNS,O,'abstract entity',is,VBZ,intransitive,N,serversâ,NN,O,null,0
+algorithms,NNS,O,'abstract entity',perform,VB,intransitive,N,caching,NN,O,null,1
+algorithms,NNS,O,'abstract entity',perform,VB,intransitive,N,caching,NN,O,null,1
+algorithms,NNS,O,'abstract entity',between,IN,null,N,servers,NNS,O,'physical entity',0
+algorithms,NNS,O,'abstract entity',perform,VB,intransitive,N,selection,NN,O,'abstract entity',1
+algorithms,NNS,O,'abstract entity',between,IN,null,N,servers,NNS,O,'physical entity',0
+s,NNS,O,'abstract entity',is,VBZ,intransitive,N,serversâ,NN,O,null,0
+algorithms,NNS,O,'abstract entity',between,IN,null,N,servers,NNS,O,'physical entity',0
+algorithms,NNS,O,'abstract entity',between,IN,null,N,servers,NNS,O,'physical entity',0
+algorithms,NNS,O,'abstract entity',perform,VB,intransitive,N,caching,NN,O,null,1
+algorithms,NNS,O,'abstract entity',perform,VB,intransitive,N,caching,NN,O,null,1
+algorithms,NNS,O,'abstract entity',perform,VB,intransitive,N,caching,NN,O,null,1
+algorithms,NNS,O,'abstract entity',perform,VB,intransitive,N,caching,NN,O,null,1
+algorithms,NNS,O,'abstract entity',perform,VB,intransitive,N,caching,NN,O,null,1
+Mediator,NN,TITLE,'physical entity',as,IN,null,N,relationships,NNS,O,'abstract entity',0
+Mediator,NN,TITLE,'physical entity',generates,VBZ,transitive,Y,requirements,NNS,O,'abstract entity',1
+Mediator,NN,TITLE,'physical entity',as,IN,null,N,relationships,NNS,O,'abstract entity',0
+Mediator,NN,TITLE,'physical entity',as,IN,null,N,basis,NN,O,'abstract entity',0
+Mediator,NNP,TITLE,'physical entity',to,TO,null,N,PA.,NNP,STATE_OR_PROVINCE,'physical entity',0
+Mediator,NNP,TITLE,'physical entity',passes,VBZ,intransitive,N,requirements,NNS,O,'abstract entity',1
+resources,NNS,O,'abstract entity',with,IN,null,N,CDNs,NNS,O,null,0
+Mediator,NN,TITLE,'physical entity',discover,VB,transitive,N,resources,NNS,O,'abstract entity',1
+resources,NNS,O,'abstract entity',with,IN,null,N,CDNs,NNS,O,null,0
+conjunction,NN,O,'abstract entity',with,IN,null,N,PA,NN,STATE_OR_PROVINCE,'physical entity',0
+Mediator,NN,TITLE,'physical entity',in,IN,null,N,PA,NN,STATE_OR_PROVINCE,'physical entity',0
+Mediator,NN,TITLE,'physical entity',in,IN,null,N,conjunction,NN,O,'abstract entity',0
+resources,NNS,O,'abstract entity',with,IN,null,N,CDNs,NNS,O,null,0
+Mediator,NN,TITLE,'physical entity',discover,VB,transitive,N,resources,NNS,O,'abstract entity',1
+Mediator,NN,TITLE,'physical entity',in,IN,null,N,PA,NN,STATE_OR_PROVINCE,'physical entity',0
+resources,NNS,O,'abstract entity',with,IN,null,N,CDNs,NNS,O,null,0
+entities,NNS,O,null,are,VBP,intransitive,N,able,JJ,O,null,0
+entities,NNS,O,null,are,VBP,intransitive,N,able,JJ,O,null,0
+arrangement,NN,O,'abstract entity',is,VBZ,intransitive,N,established,VBN,O,null,0
+arrangement,NN,O,'abstract entity',is,VBZ,intransitive,N,established,VBN,O,null,0
+arrangement,NN,O,'abstract entity',is,VBZ,intransitive,N,established,VBN,O,null,0
+arrangement,NN,O,'abstract entity',is,VBZ,intransitive,N,established,VBN,O,null,0
+rols,NNS,O,null,to,TO,null,N,servers,NNS,O,'physical entity',0
+content,NN,O,'abstract entity',is,VBZ,intransitive,N,there,RB,O,'physical entity',0
+rols,NNS,O,null,to,TO,null,N,CDNs,NNS,O,null,0
+content,NN,O,'abstract entity',is,VBZ,intransitive,N,replicated,VBN,O,null,0
+decision,NN,O,'abstract entity',is,VBZ,intransitive,N,taken,VBN,O,null,0
+rols,NNS,O,null,is,VBZ,intransitive,N,redirected,VBN,O,null,0
+decision,NN,O,'abstract entity',is,VBZ,intransitive,N,taken,VBN,O,null,0
+traffic,NN,O,'abstract entity',is,VBZ,intransitive,N,requests,NNS,O,'abstract entity',0
+rols,NNS,O,null,to,TO,null,N,CDNs,NNS,O,null,0
+Registry,NNP,O,'abstract entity',encapsulates,VBZ,transitive,Y,CDN,NN,O,null,0
+Registry,NNP,O,'abstract entity',discovering,VBG,transitive,N,resources,NNS,O,'abstract entity',0
+servers,NNS,O,'physical entity',register,VB,intransitive,Y,resource,NN,O,'abstract entity',1
+servers,NNS,O,'physical entity',register,VB,intransitive,Y,service,NN,O,'abstract entity',1
+servers,NNS,O,'physical entity',register,VB,intransitive,Y,details,NNS,O,'abstract entity',1
+Registry,NNP,O,'abstract entity',discovering,VBG,transitive,N,resources,NNS,O,'abstract entity',0
+Registry,NNP,O,'abstract entity',supplies,VBZ,transitive,N,information,NN,O,'abstract entity',1
+arrangement,NN,O,'abstract entity',is,VBZ,intransitive,N,established,VBN,O,null,0
+arrangement,NN,O,'abstract entity',is,VBZ,intransitive,N,established,VBN,O,null,0
+arrangement,NN,O,'abstract entity',is,VBZ,intransitive,N,established,VBN,O,null,0
+arrangement,NN,O,'abstract entity',is,VBZ,intransitive,N,established,VBN,O,null,0
+arrangement,NN,O,'abstract entity',is,VBZ,intransitive,N,established,VBN,O,null,0
+arrangement,NN,O,'abstract entity',is,VBZ,intransitive,N,established,VBN,O,null,0
+arrangement,NN,O,'abstract entity',is,VBZ,intransitive,N,established,VBN,O,null,0
+instance,NN,O,'abstract entity',is,VBZ,intransitive,N,created,VBN,O,null,0
+arrangement,NN,O,'abstract entity',is,VBZ,intransitive,N,established,VBN,O,null,0
+access,NN,O,'abstract entity',in,IN,null,N,arrangement,NN,O,'abstract entity',0
+Repository,NNP,O,'physical entity',provides,VBZ,transitive,Y,rules,NNS,O,'abstract entity',1
+Repository,NNP,O,'physical entity',to,TO,null,N,administer,VB,O,null,0
+Repository,NNP,O,'physical entity',provides,VBZ,transitive,Y,set,NN,O,'abstract entity',1
+Agent,NNP,O,'physical entity',as,IN,null,N,module,NN,O,'abstract entity',0
+Agent,NNP,O,'physical entity',as,IN,null,N,module,NN,O,'abstract entity',0
+Agent,NNP,O,'physical entity',establishing,VBG,transitive,N,negotiations,NNS,O,'abstract entity',0
+requirements,NNS,O,'abstract entity',with,IN,null,N,PAs,NNS,O,'abstract entity',0
+Peering,VBG,O,null,is,VBZ,intransitive,N,mediator,NN,TITLE,'physical entity',0
+negotiations,NNS,O,'abstract entity',from,IN,null,N,them,PRP,O,null,0
+Peering,VBG,O,null,is,VBZ,intransitive,N,used,VBN,O,null,0
+Peering,VBG,O,null,establish,VB,transitive,N,negotiations,NNS,O,'abstract entity',0
+Peering,VBG,O,null,establish,VB,transitive,N,peers,NNS,O,'physical entity',0
+negotiations,NNS,O,'abstract entity',acquire,VB,intransitive,Y,resources,NNS,O,'abstract entity',1
+negotiations,NNS,O,'abstract entity',with,IN,null,N,peers,NNS,O,'physical entity',0
+Peering,VBG,O,null,as,IN,null,N,conduit,NN,O,'physical entity',0
+Peering,VBG,O,null,establish,VB,transitive,N,peers,NNS,O,'physical entity',0
+Peering,VBG,O,null,by,IN,null,N,mediator,NN,TITLE,'physical entity',0
+Peering,VBG,O,null,establish,VB,transitive,N,PAs,NNS,O,'abstract entity',0
+replication,NN,O,'abstract entity',using,VBG,transitive,N,approach,NN,O,'abstract entity',0
+CDNs,NNS,O,null,assist,VB,intransitive,N,others,NNS,O,null,1
+replication,NN,O,'abstract entity',using,VBG,transitive,N,approach,NN,O,'abstract entity',0
+CDNs,NNS,O,null,assist,VB,intransitive,N,others,NNS,O,null,1
+replication,NN,O,'abstract entity',using,VBG,transitive,N,approach,NN,O,'abstract entity',0
+replication,NN,O,'abstract entity',using,VBG,transitive,N,approach,NN,O,'abstract entity',0
+replication,NN,O,'abstract entity',is,VBZ,intransitive,N,performed,VBN,O,null,0
+CDNs,NNS,O,null,serving,VBG,intransitive,N,data,NNS,O,'abstract entity',0
+CDNs,NNS,O,null,serving,VBG,intransitive,N,data,NNS,O,'abstract entity',0
+information,NN,O,'abstract entity',disseminating,VBG,transitive,Y,it,PRP,O,'abstract entity',0
+distribution,NN,O,'abstract entity',is,VBZ,intransitive,N,performed,VBN,O,null,0
+redirection,NN,O,null,â,VBP,null,N,DNS,NNP,O,null,0
+redirection,NN,O,null,â,VBP,null,N,clusters,NNS,O,'abstract entity',0
+servers,NNS,O,'physical entity',in,IN,null,N,cluster,NN,O,'abstract entity',0
+assignment,NN,O,'abstract entity',is,VBZ,intransitive,N,performed,VBN,O,null,0
+assignment,NN,O,'abstract entity',is,VBZ,intransitive,N,levels,NNS,O,'abstract entity',0
+assignment,NN,O,'abstract entity',is,VBZ,intransitive,N,levels,NNS,O,'abstract entity',0
+â,VBP,O,null,at,IN,null,N,clusters,NNS,O,'abstract entity',0
+redirection,NN,O,null,â,VBP,null,N,gateways,NNS,O,'physical entity',0
+â,VBP,O,null,at,IN,null,N,clusters,NNS,O,'abstract entity',0
+â,VBP,O,null,at,IN,null,N,DNS,NNP,O,null,0
+â,VBP,O,null,at,IN,null,N,gateways,NNS,O,'physical entity',0
+redirection,NN,O,null,â,VBP,null,N,clusters,NNS,O,'abstract entity',0
+redirection,NN,O,null,â,VBP,null,N,€,$,O,null,0
+Server,NN,O,'physical entity',to,TO,null,N,SR.,NNP,O,'physical entity',0
+Server,NN,O,'physical entity',publishes,VBZ,transitive,Y,information,NN,O,'abstract entity',1
+Server,NN,O,'physical entity',publishes,VBZ,transitive,Y,resource,NN,O,'abstract entity',1
+registry,NN,O,'abstract entity',registers,VBZ,intransitive,Y,resources,NNS,O,'abstract entity',1
+registry,NN,O,'abstract entity',registers,VBZ,intransitive,Y,resources,NNS,O,'abstract entity',1
+registry,NN,O,'abstract entity',at,IN,null,N,provider,NN,O,'physical entity',0

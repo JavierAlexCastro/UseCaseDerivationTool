@@ -1,9 +1,7 @@
 package business_objects;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 
 /**
  * <p>Title: Machine Learning Use Case Derivation</p>
@@ -87,30 +85,33 @@ public class FeatureVector {
 	   otag.add(tags[3]);
 	   oner.add(tags[4]);
 	   otype.add(types[1]);
-	   label.add(-1);	   
+	   label.add(0); //default to 0 so WEKA knows it's a numeric attribute instead of string if left blank in fv	   
    }
    
    //write Feature Vector to a csv file
-   public void writeFV() {
+   public void writeFV(String filename) {
 	   try{
-		   String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		   FileWriter csvWriter = new FileWriter("src/outputs/FV_" + timestamp + ".csv");
-		   csvWriter.write("Req. No. | requirement | subject | s-tag | s-ner | s-type | verb | v-tag | vcat | vprocess | object | o-tag | o-ner | o-type | label \n");
+		   //String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		   //FileWriter csvWriter = new FileWriter("src/outputs/FV_" + timestamp + ".csv");
+		   String fname = filename.split("\\.")[0]; //remove file extension
+		   FileWriter csvWriter = new FileWriter("src/outputs/FV_" + fname + ".csv");
+		   //csvWriter.write("Req. No. | requirement | subject | s-tag | s-ner | s-type | verb | v-tag | vcat | vprocess | object | o-tag | o-ner | o-type | label \n");
+		   csvWriter.write("Subject,S-TAG,S-NER,S-Type,Verb,V-TAG,V-CAT,V-Process,Object,O-TAG,O-NER,O-Type,Label\n");
 		   for(int i=0;i<id.size();i++){
-			   csvWriter.append(id.get(i).toString() + "|");
-			   csvWriter.append(sentence.get(i) + "|");
-			   csvWriter.append(subject.get(i) + "|");
-			   csvWriter.append(stag.get(i) + "|");
-			   csvWriter.append(sner.get(i) + "|");
-			   csvWriter.append(stype.get(i) + "|");
-			   csvWriter.append(verb.get(i) + "|");
-			   csvWriter.append(vtag.get(i) + "|");
-			   csvWriter.append(vcat.get(i).toString() + "|");
-			   csvWriter.append(vprocess.get(i).toString() + "|");
-			   csvWriter.append(object.get(i) + "|");
-			   csvWriter.append(otag.get(i) + "|");
-			   csvWriter.append(oner.get(i) + "|");
-			   csvWriter.append(otype.get(i) + "|");
+			   //csvWriter.append(id.get(i).toString() + "|");
+			   //csvWriter.append(sentence.get(i) + "|");
+			   csvWriter.append(subject.get(i) + ",");
+			   csvWriter.append(stag.get(i) + ",");
+			   csvWriter.append(sner.get(i) + ",");
+			   csvWriter.append(stype.get(i) + ",");
+			   csvWriter.append(verb.get(i) + ",");
+			   csvWriter.append(vtag.get(i) + ",");
+			   csvWriter.append(vcat.get(i).toString() + ",");
+			   csvWriter.append(vprocess.get(i).toString() + ",");
+			   csvWriter.append(object.get(i) + ",");
+			   csvWriter.append(otag.get(i) + ",");
+			   csvWriter.append(oner.get(i) + ",");
+			   csvWriter.append(otype.get(i) + ",");
 			   csvWriter.append(label.get(i) + "\n");
 		   }
 		   csvWriter.flush();
@@ -133,7 +134,8 @@ public class FeatureVector {
 	   determine index? */
    }
    
-   public ArrayList<Integer> getId(){ return id; }
+   //geters
+   /*public ArrayList<Integer> getId(){ return id; }
    public ArrayList<String> getSentence(){ return sentence; }
    public ArrayList<String> getSubject() { return subject; }
    public ArrayList<String> getStag(){ return stag; }
@@ -147,15 +149,11 @@ public class FeatureVector {
    public ArrayList<String> getOtag(){ return otag; }
    public ArrayList<String> getOner(){ return oner; }
    public ArrayList<String> getOtype(){ return otype; }
-   public ArrayList<Integer> getLabel(){ return label; }
+   public ArrayList<Integer> getLabel(){ return label; }*/
    
-   //we might not need setters because we add one row at a time with attribute.add()
-   //for instance we can get the subject for sentence #5 with fv.getSubject().get(5)
    
-   //alternatively we can change the implementation to have a List of feature vectors
-   //instead of having one feature vector with a List for each attribute
-   /*
-   public void setId(int id){ this.id=id; }
+   //seters
+   /*public void setId(int id){ this.id=id; }
    public void setSentence(String sentence){ this.sentence=sentence; }
    public void setSubject(String subject){ this.subject=subject; }
    public void setStag(String stag){ this.stag=stag; }
@@ -169,8 +167,7 @@ public class FeatureVector {
    public void setOtag(String otag){ this.otag=otag; }
    public void setOner(String oner){ this.oner=oner; }
    public void setOtype(String otype){ this.otype=otype; }
-   public void setLabel(int label){ this.label=label; }
-   */
+   public void setLabel(int label){ this.label=label; }*/
 
    public static void main(String[] args) {
       //FeatureVector fv = new FeatureVector();

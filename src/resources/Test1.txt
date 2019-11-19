@@ -1,0 +1,52 @@
+﻿The system shall have the same search bar for torrent and streaming search.
+The system shall update the database of torrent sites and streaming sites via the internet.
+The system shall include the option for torrent searching with a tick box.
+The system shall retrieve torrent information when a query is made.
+The system shall display a message if no results are found on a search. 
+The system shall arrange the results by size, date or alphabetical order.
+The system shall have a page button to navigate the results. 
+The system shall include the option for video host searching with a tick box.
+The system shall include the option for video link searching with a tick box.
+The system shall retrieve video information when a query to video hosting sites is made.
+The system shall retrieve the video information when a query to video link sites is made.
+The system shall display a message if no results are found on a search.
+The system shall arrange results by length, date or alphabetical order.
+The system shall provide an API to handle the migration process and default configuration.
+The API will require the inclusion of only one header file.
+The system shall generate an error if a configuration is not provided. 
+The system shall allow the user to provide metadata related to the conversion.
+The system shall store metadata related to the conversion in the converted files.
+The system shall allow automatically generated migration metadata to be stored in the converted files.
+The system shall call external tools and services.
+The system shall require the use of persistent, opaque, unique, and global identifiers for records access.
+The system shall use an external tool to scan files before conversion.
+The API shall allow external tools to be used for file format identification.
+The ARC to WARC migration shall run on multiple machines.
+The system shall allow the user to turn logging during the migration on or off at any time.
+The system shall use checkpoints during processing for managing atomic operations when possible.
+The system shall be able to simulate the generation of useful reports from a blank conversion.
+The system shall find and report records with the same checksum.
+The system shall use a centralized database to compare processing records against processed records.
+The system shall validate the migration using metadata included in the files.
+The system shall use payload checksum comparisons.
+The system shall provide sampling to quickly validate the conversions.
+The system shall use Heritrix’s arcreader to validate the conversion.
+The system shall allow reverse migration to validate checksums.
+The system shall allow to repackage WARC files by filtering records based on URL.
+The system shall allow to repackage WARC files by filtering records based on MIME-Types.
+The system shall allow to repackage WARC files by filtering records based on size.
+The system shall allow to repackage WARC files by filtering records based on timestamp.
+The system shall allow to repackage WARC files by filtering on any field in the WARC specification.
+Repackaging shall allow pre and post-record, file and job operations.
+Pre-operation can prevent a file or record being processed by returning value.
+The system shall include a user defined metadata record in each repackaged WARC.
+The system shall provide tools to build reports from WARC files
+The system shall allow the user to export summaries in various formats.
+The WARC browser shall display aggregated WARCs summaries in its UI.
+The WARC browser shall display a manifest of WARC files and their locations.
+The system shall compare WARC sets based on defined criteria.
+The system shall draw difference graphs between WARC collections.
+The system shall allow the user to view crawls deltas.
+The system shall implement WARC browser server-side rewriting.
+The system shall integrate a proxy mode inside the WARC browser.
+The system shall integrate the full-text search module with the WARC browser.

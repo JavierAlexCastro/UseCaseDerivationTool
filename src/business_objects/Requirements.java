@@ -12,13 +12,12 @@ public class Requirements {
 	
 	public ArrayList<String> getRequirements(String filename) throws Exception {
 		//open requirements file and populate `sentences`
-		BufferedReader br = new BufferedReader(new FileReader(filename)); 
+		BufferedReader br = new BufferedReader(new FileReader("src/resources/"+filename)); 
 		String st; 
 		ArrayList<String> requirement = new ArrayList<String>();
-		while ((st = br.readLine()) != null) 
-			//			    System.out.println(st); 
+		while ((st = br.readLine()) != null) {
 			requirement.add(st);
-		//System.out.println(requirement);
+		}
 		br.close();
 		return requirement;
 	}
@@ -28,13 +27,13 @@ public class Requirements {
 	}
 	
 	public static void main(String[] args) {
-	      Requirements reqs = new Requirements();
+	      /*Requirements reqs = new Requirements();
 	      String filename = "src/resources/requirements.txt";
 	      try{
 	    	  reqs.getRequirements(filename);
 	      }catch(Exception ex){
 	    	  ex.printStackTrace();
-	      }
+	      }*/
 	}
 	
 }

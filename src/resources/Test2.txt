@@ -1,0 +1,12 @@
+The system shall have the same search bar for torrent and streaming search.
+The system shall update the database of torrent sites and streaming sites via the internet.
+The system shall include the option for torrent searching with a tick box.
+The system shall retrieve torrent information when a query is made.
+The system shall display a message if no results are found on a search. 
+The system shall arrange the results by size, date or alphabetical order.
+The system shall have a page button to navigate the results. 
+The system shall include the option for video host searching with a tick box.
+The system shall include the option for video link searching with a tick box.
+The system shall retrieve video information when a query to video hosting sites is made.
+The system shall retrieve the video information when a query to video link sites is made.
+The system shall display a message if no results are found on a search.

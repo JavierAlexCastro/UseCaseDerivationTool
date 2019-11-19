@@ -22,48 +22,42 @@ public class StanfordNLP {
 		String otag = "";
 		String oner = "";
 		Properties props = new Properties();
-		List<String> subject = Arrays.asList(triple[0].split(" "));
-		List<String> verb = Arrays.asList(triple[1].split(" "));
-		List<String> object = Arrays.asList(triple[2].split(" "));
+		List<String> subject = Arrays.asList(triple[0].split(" ")); //list of words in subject
+		List<String> verb = Arrays.asList(triple[1].split(" ")); //list of words in verb
+		List<String> object = Arrays.asList(triple[2].split(" ")); //list of words in object
 		
+		//set the properties for getting the POS and NER
 	    props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner");
 	    StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
-	    // Annotate an example document.
+	    //create the document based on the triple
 	    Annotation doc = new Annotation(triple[0]+" "+triple[1]+" "+triple[2]);
 	    pipeline.annotate(doc);
 
-	    List<CoreMap> sentences = doc.get(CoreAnnotations.SentencesAnnotation.class);
-	    for (CoreMap sentence : sentences) {
-	        for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) {
-	            String word = token.get(CoreAnnotations.TextAnnotation.class);
-	            if(subject.contains(word)){
+	    List<CoreMap> sentences = doc.get(CoreAnnotations.SentencesAnnotation.class); //get sentences from the document - only 1 in this context
+	    for (CoreMap sentence : sentences) { //for each sentence
+	        for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) { //for each token in the sentence
+	            String word = token.get(CoreAnnotations.TextAnnotation.class); //extract the word from the token
+	            if(subject.contains(word)){ //if it matches any word in the subject
 	            	stag = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
 		            sner = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
-	            }else if(verb.contains(word)){
+	            }else if(verb.contains(word)){ //if it matches any word in the verb
 	            	vtag = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
-	            }else if(object.contains(word)){
+	            }else if(object.contains(word)){ //if it matches any word in the object
 	            	otag = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
 		            oner = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
 	            }else{
-	            	System.out.println("Not subject, not ver, not object?");
+	            	System.out.println("Not subject, not ver, not object? Word: " + word);
 	            }
-	            // this is the POS tag of the token
-	            //String pos = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
-	            //String ner = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
-	            //System.out.println(word + " - POS: " + pos + " - NER: " + ner);
-	            
-	            //update tag and ner variables
 	        }
 	    }	
 		String[] tags = {stag, sner, vtag, otag, oner};
-		//System.out.println(Arrays.toString(tags));
 		return tags;
 	}
 	
 	public static void main(String[] args) {
-	      StanfordNLP snlp = new StanfordNLP();
+	      /*StanfordNLP snlp = new StanfordNLP();
 	      String[] triple = {"user", "retrieve money from", "ATM"};
-	      snlp.getTypes(triple);
+	      snlp.getTypes(triple);*/
 	}
 }
