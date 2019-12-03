@@ -1,0 +1,48 @@
+@relation FV_Test2
+
+@attribute subject {system,query}
+@attribute s-tag {NN}
+@attribute s-NER {O}
+@attribute s-type {group,communication}
+@attribute verb {have,update,via,include,be,retrieve,arrange}
+@attribute v-tag {VBP,IN,VB}
+@attribute v-cat {transitive,intransitive}
+@attribute v-process {N,Y}
+@attribute object {torrent,bar,database,site,internet,search,box,option,make,information,result,size,host,link}
+@attribute o-tag {NN,VB}
+@attribute o-NER {O,TITLE}
+@attribute o-type {phenomenon,artifact,communication,location,act,possession,cognition,attribute,person,relation}
+@attribute label {false}
+
+@data
+system,NN,O,group,have,VBP,transitive,N,torrent,NN,O,phenomenon,false
+system,NN,O,group,have,VBP,transitive,N,bar,NN,O,artifact,false
+system,NN,O,group,have,VBP,transitive,N,torrent,NN,O,phenomenon,false
+system,NN,O,group,have,VBP,transitive,N,bar,NN,O,artifact,false
+system,NN,O,group,update,VBP,transitive,N,database,NN,O,communication,false
+system,NN,O,group,update,VBP,transitive,N,site,NN,O,location,false
+system,NN,O,group,via,IN,transitive,N,internet,NN,O,artifact,false
+system,NN,O,group,include,VBP,transitive,Y,search,NN,O,act,false
+system,NN,O,group,include,VBP,transitive,Y,torrent,NN,O,phenomenon,false
+system,NN,O,group,include,VBP,transitive,Y,box,NN,O,artifact,false
+system,NN,O,group,include,VBP,transitive,Y,option,NN,O,possession,false
+query,NN,O,communication,be,VB,intransitive,N,make,VB,O,cognition,false
+query,NN,O,communication,be,VB,intransitive,N,make,VB,O,cognition,false
+system,NN,O,group,retrieve,VBP,intransitive,N,information,NN,O,communication,false
+system,NN,O,group,arrange,VBP,transitive,N,result,NN,O,phenomenon,false
+system,NN,O,group,arrange,VBP,transitive,N,size,NN,O,attribute,false
+system,NN,O,group,include,VBP,transitive,Y,host,NN,TITLE,person,false
+system,NN,O,group,include,VBP,transitive,Y,box,NN,O,artifact,false
+system,NN,O,group,include,VBP,transitive,Y,search,NN,O,act,false
+system,NN,O,group,include,VBP,transitive,Y,option,NN,O,possession,false
+system,NN,O,group,include,VBP,transitive,Y,search,NN,O,act,false
+system,NN,O,group,include,VBP,transitive,Y,box,NN,O,artifact,false
+system,NN,O,group,include,VBP,transitive,Y,option,NN,O,possession,false
+system,NN,O,group,include,VBP,transitive,Y,link,NN,O,relation,false
+query,NN,O,communication,be,VB,intransitive,N,make,VB,O,cognition,false
+system,NN,O,group,retrieve,VBP,intransitive,N,information,NN,O,communication,false
+system,NN,O,group,retrieve,VBP,intransitive,N,information,NN,O,communication,false
+query,NN,O,communication,be,VB,intransitive,N,make,VB,O,cognition,false
+query,NN,O,communication,be,VB,intransitive,N,make,VB,O,cognition,false
+system,NN,O,group,retrieve,VBP,intransitive,N,information,NN,O,communication,false
+query,NN,O,communication,be,VB,intransitive,N,make,VB,O,cognition,false

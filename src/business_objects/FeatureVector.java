@@ -6,17 +6,20 @@ import java.io.IOException;
 /**
  * <p>Title: Machine Learning Use Case Derivation</p>
  *
- * <p>Description: </p>
+ * <p>Description: Generates a Feature vector based on a list of requirements (.txt)
+ *                 Generates Use Cases from a list of requirements (.txt)
+ *                     Requires training data 'labelledFile_true_false_version.arff'</p>
  *
  * <p>Copyright: Copyright (c) 2019</p>
  *
- * <p>Company: </p>
+ * <p>Company: UTA - CSE5322 - Fall 2019 - Team 4</p>
  *
  * @author not attributable
  * @version 1.0
  */
 
 public class FeatureVector {
+   //composite pattern
    private ArrayList<Integer> id;
    private ArrayList<String> sentence;
    private ArrayList<String> subject;
@@ -25,13 +28,13 @@ public class FeatureVector {
    private ArrayList<String> stype;
    private ArrayList<String> verb;
    private ArrayList<String> vtag;
-   private ArrayList<Integer> vcat;
-   private ArrayList<Integer> vprocess;
+   private ArrayList<String> vcat;
+   private ArrayList<String> vprocess;
    private ArrayList<String> object;
    private ArrayList<String> otag;
    private ArrayList<String> oner;
    private ArrayList<String> otype;
-   private ArrayList<Integer> label;
+   private ArrayList<Boolean> label;
    
    /*Constructor*/
    public FeatureVector() {
@@ -43,25 +46,26 @@ public class FeatureVector {
 	   stype = new ArrayList<String>();
 	   verb = new ArrayList<String>();
 	   vtag = new ArrayList<String>();
-	   vcat = new ArrayList<Integer>();
-	   vprocess = new ArrayList<Integer>();
+	   vcat = new ArrayList<String>();
+	   vprocess = new ArrayList<String>();
 	   object = new ArrayList<String>();
 	   otag = new ArrayList<String>();
 	   oner = new ArrayList<String>();
 	   otype = new ArrayList<String>();
-	   label = new ArrayList<Integer>();
+	   label = new ArrayList<Boolean>();
    }
    
    public String toString() {
       return ""+id+", "+sentence+", "+subject+", "+stag+", "+
          sner+", "+stype+", "+verb+", "+vtag+", "+
          vcat+", "+vprocess+", "+object+", "+otag+", "+
-         oner+", "+otype+", "+label;
+         oner+", "+otype+", "+"label";
    }
    
    //populate a feature vector with an individual row
    public void addRow(int req_no, String requirement, String[] triple, String[] tags, String[] types) {
-	   int int_vcat, int_vprocess;
+	   vcat.add(types[2]);
+	   vprocess.add(types[3]);
 	   id.add(req_no);
 	   sentence.add(requirement);
 	   subject.add(triple[0]);
@@ -70,36 +74,20 @@ public class FeatureVector {
 	   stype.add(types[0]);
 	   verb.add(triple[1]);
 	   vtag.add(tags[2]);
-	   try{
-		   int_vcat = Integer.parseInt(types[2]);
-		   int_vprocess = Integer.parseInt(types[3]);
-	   }catch(NumberFormatException nfex){
-		   int_vcat = 0;
-		   int_vprocess = 0;
-		   System.out.println("There was an error converting vcat and vprocess to Integer");
-		   nfex.printStackTrace();
-	   }
-	   vcat.add(int_vcat);
-	   vprocess.add(int_vprocess);
 	   object.add(triple[2]);
 	   otag.add(tags[3]);
 	   oner.add(tags[4]);
 	   otype.add(types[1]);
-	   label.add(0); //default to 0 so WEKA knows it's a numeric attribute instead of string if left blank in fv	   
+	   label.add(false); //default to false so WEKA knows it's a string attribute   
    }
    
    //write Feature Vector to a csv file
    public void writeFV(String filename) {
 	   try{
-		   //String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		   //FileWriter csvWriter = new FileWriter("src/outputs/FV_" + timestamp + ".csv");
 		   String fname = filename.split("\\.")[0]; //remove file extension
 		   FileWriter csvWriter = new FileWriter("src/outputs/FV_" + fname + ".csv");
-		   //csvWriter.write("Req. No. | requirement | subject | s-tag | s-ner | s-type | verb | v-tag | vcat | vprocess | object | o-tag | o-ner | o-type | label \n");
-		   csvWriter.write("Subject,S-TAG,S-NER,S-Type,Verb,V-TAG,V-CAT,V-Process,Object,O-TAG,O-NER,O-Type,Label\n");
+		   csvWriter.write("subject,s-tag,s-NER,s-type,verb,v-tag,v-cat,v-process,object,o-tag,o-NER,o-type,label\n");
 		   for(int i=0;i<id.size();i++){
-			   //csvWriter.append(id.get(i).toString() + "|");
-			   //csvWriter.append(sentence.get(i) + "|");
 			   csvWriter.append(subject.get(i) + ",");
 			   csvWriter.append(stag.get(i) + ",");
 			   csvWriter.append(sner.get(i) + ",");
@@ -129,9 +117,7 @@ public class FeatureVector {
    }
    
    public void insertLabel(int label) {
-	   /* insert label provided by user into label ArrayList. 
-	   Probably using `attribute.set(index, value)` but how to
-	   determine index? */
+	   
    }
    
    //geters

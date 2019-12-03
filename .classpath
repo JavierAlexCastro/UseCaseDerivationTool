@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="D:/Downloads/jwnl14-rc2/jwnl.jar"/>
 	<classpathentry kind="lib" path="D:/Downloads/commons-logging-1.2/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files/Weka-3-8/weka.jar"/>
+	<classpathentry kind="lib" path="D:/Downloads/autoweka-2.6/autoweka.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

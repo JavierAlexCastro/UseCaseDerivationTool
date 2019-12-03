@@ -20,7 +20,8 @@ public class WordNet {
 		
 	}
 	
-	public String[] getTypes(String[] triple) throws IOException {
+	//Chain of Responsibility to handle exception somewhere else
+	public String[] getTypes(String[] triple) throws Exception {
 		String stype = "";
 		String otype = "";
 		String vcat = "";
@@ -49,8 +50,9 @@ public class WordNet {
 	}
 	
 	//determines if verb is a process
-	private String findIfProcess(String verb) {
-		String vprocess = "0";
+	//Chain of Responsibility to handle exception somewhere else
+	private String findIfProcess(String verb) throws Exception{
+		String vprocess = "N";
 		String result;
 		String[] sp_result;
 		String temp_verb; //if verb has more than one word, this is the chosen verb to look for
@@ -69,11 +71,11 @@ public class WordNet {
 				if(token.compareTo(" ")!=0 || !token.isEmpty()) { //check if token is not empty
 					if(token.length()>=3 && temp_verb.length()>=3){ //if token and verb are 3 or more characters long
 						if(token.startsWith(temp_verb.substring(0, 3)) && token.endsWith("ion")) { //if token is a variation of the verb ending in -ion
-							vprocess = "1";
+							vprocess = "Y";
 						}
 					}else{ //if token or verb are too short (2 characters or less)
 						if(token.endsWith("ion")) { //if it SOMEHOW ends with -ion *confused programmer noises*
-							vprocess = "1";
+							vprocess = "Y";
 						}
 					}
 					
@@ -81,17 +83,20 @@ public class WordNet {
 			}
 		}catch(IOException ioex){
 			System.out.println("Error executing WordNet Command. Word: "+verb);
+			vprocess = "null";
 			ioex.printStackTrace();
 		}catch(Exception ex){
 			System.out.println("Error executing WordNet Command. Word: "+verb);
+			vprocess = "null";
 			ex.printStackTrace();
 		}
 		return vprocess;
 	}
 	
 	//determines if verb is transitive
-	private String findIfTransitive(String verb) {
-		String vcat = "0";
+	//Chain of Responsibility to handle exception somewhere else
+	private String findIfTransitive(String verb) throws Exception{
+		String vcat = "intransitive";
 		String temp_verb;
 		boolean result;
 		String[] verb_words = verb.split(" "); //all words in the verb
@@ -104,19 +109,22 @@ public class WordNet {
 		
 		try{
 			result = getFrames(temp_verb); //check if verb needs an object to make sense (AKA is not transitive)
-			if(result){ vcat = "1"; }
+			if(result){ vcat = "transitive"; }
 		}catch(IOException ioex){
 			System.out.println("Error executing WordNet Command");
+			vcat = "null";
 			ioex.printStackTrace();
 		}catch(Exception ex){
 			System.out.println("Error executing WordNet Command");
+			vcat = "null";
 			ex.printStackTrace();
 		}
 		return vcat;
 	}
 	
 	//helper function for findIfProcess(). Looks for instances where verb+ion exist.
-	private String getDerived(String word) throws IOException {
+	//Chain of Responsibility to handle exception somewhere else
+	private String getDerived(String word) throws Exception {
 		String line = null;
 		String result = "";
 		List<String> command = new ArrayList<String>(); //command to execute as if on terminal
@@ -135,7 +143,8 @@ public class WordNet {
 	}
 	
 	//helper function for findIfTransitive(). Finds if verb needs a subject and object to make sense. (transitive)
-	private boolean getFrames(String word) throws IOException {
+	//Chain of Responsibility to handle exception somewhere else
+	private boolean getFrames(String word) throws Exception {
 		String line = null;
 		String[] tokens;
 		boolean size_check = true;
@@ -162,7 +171,8 @@ public class WordNet {
 	}	
 	
 	//return word type as determined by WordNet. Assumes word is a NOUN
-	private String getWordType(String word) {
+	//Chain of Responsibility to handle exception somewhere else
+	private String getWordType(String word) throws Exception {
 		String type = "";		
 		try {
 			IndexWord iword = Dictionary.getInstance().lookupIndexWord(POS.NOUN, word);

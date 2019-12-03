@@ -1,46 +1,36 @@
 package business_objects;
 
+import java.util.ArrayList;
+
 public class UseCase {
-	private String actor;
-	private String system;
-	private String subsystem;
-	private boolean isValid;
+	private ArrayList<String> actors;
+	private ArrayList<String> verbs;
+	private ArrayList<String> objects;
 	
 	/*constructor*/
-	public UseCase(String actor, String system, String subsystem) {
-		
+	public UseCase() {
+		actors = new ArrayList<>();
+		verbs = new ArrayList<>();
+		objects = new ArrayList<>();
 	}
 	
-	public String getActor() {
-		return actor;
+	public void extractUC(String usecase) throws Exception{
+		String[] line_tokens = usecase.split("-"); //split into subject, verb, object
+		
+		actors.add(line_tokens[0].replace(" ","").split(":")[1]);
+		verbs.add(line_tokens[1].replace(" ","").split(":")[1]);
+		objects.add(line_tokens[2].replace(" ","").split(":")[1]);
 	}
-
-	public void setActor(String actor) {
-		this.actor = actor;
+	
+	public void printUseCases() throws Exception{
+		System.out.println("================================");
+		for(int i=0; i<actors.size() && i<verbs.size() && i<objects.size(); i++){
+			System.out.println("Use Case #: " + i+1);
+			System.out.println("Actor: " + actors.get(i));
+			System.out.println("Verb: " + verbs.get(i));
+			System.out.println("Object: " + objects.get(i));
+			System.out.println("================================");
+		}
 	}
-
-	public String getSystem() {
-		return system;
-	}
-
-	public void setSystem(String system) {
-		this.system = system;
-	}
-
-	public String getSubsystem() {
-		return subsystem;
-	}
-
-	public void setSubsystem(String subsystem) {
-		this.subsystem = subsystem;
-	}
-
-	public boolean isValid() {
-		return isValid;
-	}
-
-	public void setValid(boolean isValid) {
-		this.isValid = isValid;
-	}	
 	
 }

@@ -10,6 +10,7 @@ public class Requirements {
 		
 	}
 	
+	//Chain of Responsibility to handle exception somewhere else
 	public ArrayList<String> getRequirements(String filename) throws Exception {
 		//open requirements file and populate `sentences`
 		BufferedReader br = new BufferedReader(new FileReader("src/resources/"+filename)); 

@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
@@ -35,6 +36,9 @@ public class SystemGUI {
 	private static JLabel label;
 	private static JButton button;
 	private static JTextArea textArea;
+	
+	////Singleton and Creator pattern
+	private static GenerateFVController fv_controller = GenerateFVController.getInstance();
 
 	/**
 	 * Launch the application.
@@ -143,6 +147,10 @@ public class SystemGUI {
 					label = new JLabel(BorderLayout.CENTER);
 					button = new JButton("OK");
 					
+					//selection gui for strategy pattern
+					String[] algorithms = {"AutoWEKA", "IBk", "DecisionStump", "Decision Table", "REPTree", "ZeroR"};
+					String alg = (String)JOptionPane.showInputDialog(null, "Please Choose a classification algorithm", "Algorithm Chooser", JOptionPane.QUESTION_MESSAGE, null, algorithms, algorithms[0]);
+					
 					dialog.getContentPane().setLayout(new BorderLayout());
 					dialog.getContentPane().add(label);
 					
@@ -161,9 +169,9 @@ public class SystemGUI {
 			        dialog.setLocationRelativeTo(frame); //center on parent window
 			        dialog.setVisible(true);
 			        
-			        
-					generateUCThread(file.getName()); //create background thread
-					
+			        if(!alg.equals("")) {
+			        	generateUCThread(file.getName(), alg); //create background thread
+			        }
 				}
 			}
 		});
@@ -171,7 +179,7 @@ public class SystemGUI {
 		
 	}
 	//For making a prediction
-	private static void generateUCThread(String filename)  
+	private static void generateUCThread(String filename, String alg)  
     { 
         SwingWorker<String, String> sw = new SwingWorker<String, String>()  
         { 
@@ -180,12 +188,12 @@ public class SystemGUI {
             protected String doInBackground() throws Exception  
             { 
                 // define what thread will do here
-            	GenerateUCController generate_controller = new GenerateUCController();
-            	GenerateFVController fv_controller = new GenerateFVController();
+            	
+            	GenerateUCController generate_controller = GenerateUCController.getInstance(); //singleton pattern
             	publish(" Preparing Requirements. Please wait . . .");
             	fv_controller.generateFV(filename); //generate fv for requirements
-            	publish(" Making a prediction. Please wait . . .");
-            	String message = generate_controller.labelRequirements(filename); //generate use cases from requirements
+            	publish(" Making a prediction. May take some time. Please wait . . .");
+            	String message = generate_controller.labelRequirements(filename, alg); //generate use cases from requirements
             	String fname = filename.split("\\.")[0]; //remove file extension
             	if(message.contains("Usecase generated successfully!")) { //if it generated use cases successfully
             		FileReader useCaseFile = new FileReader("src/outputs/USECASES_"+fname+".txt");
@@ -244,7 +252,6 @@ public class SystemGUI {
             { 
                 // define what thread will do here
             	publish(" Generating FV. Please wait . . .");
-            	GenerateFVController fv_controller = new GenerateFVController(); 
             	return fv_controller.generateFV(filename); //generate feature vector from requirements and return success message
             } 
   

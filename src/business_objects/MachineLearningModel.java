@@ -4,16 +4,23 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.PrintWriter;
 
 import weka.core.Instances;
+import weka.classifiers.AbstractClassifier;
 import weka.classifiers.lazy.IBk;
+import weka.classifiers.rules.DecisionTable;
+import weka.classifiers.rules.ZeroR;
+import weka.classifiers.trees.DecisionStump;
+import weka.classifiers.trees.REPTree;
 import weka.core.converters.CSVLoader;
+import weka.classifiers.meta.AutoWEKAClassifier;
 
 
 public class MachineLearningModel {
 	 private double accuracy;
-	 private IBk classifier = null;
+	 private AbstractClassifier classifier = null;
+	 
+	 //private IBk classifier = null;
 	 String[] tokenized_req;
 	 String req;
 	 
@@ -22,7 +29,8 @@ public class MachineLearningModel {
 		 
 	 }
 	 
-	 public void makePrediction(String filename) throws Exception{
+	 //Chain of Responsibility to handle exception somewhere else
+	 public void makePrediction(String filename, String alg) throws Exception{
 		 String fname = filename.split("\\.")[0]; //file name without file extension
 		 
 		 // load CSV
@@ -40,45 +48,55 @@ public class MachineLearningModel {
 		 Instances unlabeled = new Instances(
 		                         new BufferedReader(
 		                           new FileReader("src/outputs/ARFF_" + fname + ".arff")));
+		
 		 //load model training data
-		 Instances train = new Instances(
-			                 new BufferedReader(
-			                   new FileReader("src/resources/feature_vector.arff")));
+		 Instances train = null;
+		 try{
+			 train = new Instances(
+				                 new BufferedReader(
+				                   new FileReader("src/resources/labelledFile_true_false_version.arff")));
+		 }catch(Exception e){
+			 System.out.println("Couldn't find training data file (src/resources/labelledFile_true_false_version.arff)");
+			 e.printStackTrace();
+		 }
 
 		 
 		 unlabeled.setClassIndex(unlabeled.numAttributes()-1); // set class attribute to "Label"
 		 Instances labeled = new Instances(unlabeled); // create copy to label
 		 
 		 //build classifier
-		 classifier = new IBk();
-		 train.setClassIndex(train.numAttributes() - 1);
-		 classifier.buildClassifier(train);
-		 
-		 PrintWriter uc_writer = new PrintWriter("src/outputs/USECASES_"+fname+".txt", "UTF-8"); //writer for labeled instances
-		 double clsLabel; //predicted value
-
-		 //label instances
-		 for (int i = 0; i < unlabeled.numInstances(); i++) { //for each row in feature vector
-		   clsLabel = classifier.classifyInstance(unlabeled.instance(i));
-		   if(clsLabel>=0.5){ //if 50% or more confidence, then a 1
-			   clsLabel = 1;
-			   tokenized_req = unlabeled.get(i).toString().split(","); //split feature vector row into attributes
-			   req = "Subject: "+tokenized_req[0]+" - Verb: "+tokenized_req[4]+" - Object: " + tokenized_req[8]; //create use case based on subject, verb and object
-			   uc_writer.println(req); //write use case to file
-		   }else{ //else a 0
-			   clsLabel = 0;
-		   }
-		   labeled.instance(i).setClassValue(clsLabel); //update label for that row
+		 //Strategy pattern
+		 switch(alg) {
+		 case "IBk":classifier = new IBk();break;
+		 case "DecisionStump":classifier = new DecisionStump();break;
+		 case "Decision Table":classifier = new DecisionTable();break;
+		 case "REPTree":classifier = new REPTree();break;
+		 case "ZeroR":classifier = new ZeroR();break;
+		 case "AutoWEKA":
+			 classifier = new AutoWEKAClassifier();
+		     ((AutoWEKAClassifier) classifier).setTimeLimit(5);
+		     break;
+		 default:
+			 classifier = new AutoWEKAClassifier();
+		     ((AutoWEKAClassifier) classifier).setTimeLimit(5);
+		     break;
 		 }
-		 uc_writer.close();
+		 train.setClassIndex(train.numAttributes() - 1); //sets class index to 'label' attribute
 		 
-		 // save labeled data - can be removed. Only used for debugging
-		 BufferedWriter arff_writer = new BufferedWriter(
+		//setting strategy
+		 Context context = new Context();
+		 context.setStrategy(classifier);
+		 
+		//performing steps of algorithm
+		 labeled = context.performSteps(train, fname, unlabeled, labeled);
+		 
+		 // save labeled data - can be removed. Only used for debugging.
+		 /*BufferedWriter arff_writer = new BufferedWriter(
 		                           new FileWriter("src/outputs/LABELED_" +fname+".arff"));
 		 arff_writer.write(labeled.toString());
 		 arff_writer.newLine();
 		 arff_writer.flush();
-		 arff_writer.close();
+		 arff_writer.close();*/
 	 }
 	 
 	 public void setAccuracy(double accuracy) { 

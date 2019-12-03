@@ -1,6 +1,7 @@
 package business_objects;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -15,13 +16,15 @@ public class StanfordNLP {
 		
 	}
 	
-	public String[] getTypes(String[] triple) {
+	//Chain of Responsibility to handle exception somewhere else
+	public String[] getTypes(String[] triple) throws Exception{
 		String stag = "";
 		String sner = "";
 		String vtag = "";
 		String otag = "";
 		String oner = "";
 		Properties props = new Properties();
+		//composite pattern
 		List<String> subject = Arrays.asList(triple[0].split(" ")); //list of words in subject
 		List<String> verb = Arrays.asList(triple[1].split(" ")); //list of words in verb
 		List<String> object = Arrays.asList(triple[2].split(" ")); //list of words in object
@@ -34,10 +37,15 @@ public class StanfordNLP {
 	    Annotation doc = new Annotation(triple[0]+" "+triple[1]+" "+triple[2]);
 	    pipeline.annotate(doc);
 
+	    //composite pattern
 	    List<CoreMap> sentences = doc.get(CoreAnnotations.SentencesAnnotation.class); //get sentences from the document - only 1 in this context
-	    for (CoreMap sentence : sentences) { //for each sentence
-	        for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) { //for each token in the sentence
-	            String word = token.get(CoreAnnotations.TextAnnotation.class); //extract the word from the token
+	    Iterator<CoreMap> sent_iterator = sentences.iterator(); //iterator pattern
+	    while(sent_iterator.hasNext()) {
+	    	CoreMap sentence = sent_iterator.next();
+	    	Iterator<CoreLabel> token_iterator = sentence.get(CoreAnnotations.TokensAnnotation.class).iterator(); //iterator pattern
+	    	while(token_iterator.hasNext()) {
+	    		CoreLabel token = token_iterator.next();
+	    		String word = token.get(CoreAnnotations.TextAnnotation.class); //extract the word from the token
 	            if(subject.contains(word)){ //if it matches any word in the subject
 	            	stag = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
 		            sner = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
@@ -49,8 +57,8 @@ public class StanfordNLP {
 	            }else{
 	            	System.out.println("Not subject, not ver, not object? Word: " + word);
 	            }
-	        }
-	    }	
+	    	}
+	    }
 		String[] tags = {stag, sner, vtag, otag, oner};
 		return tags;
 	}

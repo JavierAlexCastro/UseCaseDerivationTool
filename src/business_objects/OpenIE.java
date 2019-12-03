@@ -1,6 +1,7 @@
 package business_objects;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import edu.stanford.nlp.ie.util.RelationTriple;
 import edu.stanford.nlp.simple.*;
@@ -12,13 +13,37 @@ public class OpenIE {
 		
 	}
 	
-	public ArrayList<String[]> getTriple(String requirement) {
+	//Chain of Responsibility to handle exception somewhere else	
+	public ArrayList<String[]> getTriple(String requirement) throws Exception {
 		ArrayList<String[]> triples = new ArrayList<String[]>(); //list of triples for requirement
 		String[] single_triple = {"", "", ""}; //triple in array form - single triple
 	    Document doc = new Document(requirement); // Create a CoreNLP document
 	    String[] tokens;
 	    // Iterate over the sentences in the document
-	    for (Sentence sent : doc.sentences()) {
+	    Iterator<Sentence> sent_iterator = doc.sentences().iterator(); //iterator
+	    while(sent_iterator.hasNext()) {
+	    	Sentence sent = sent_iterator.next();
+	    	Iterator<RelationTriple> triple_iterator = sent.openieTriples().iterator(); //iterator
+	    	while(triple_iterator.hasNext()){
+	    		RelationTriple temp_triple = triple_iterator.next();
+	    		single_triple = tripleToArray(temp_triple); //sentence can have multiple triples, this is placeholder for one of them
+	    		if(single_triple[0].contains(" ")){ //if subject part of triple contains a space (more than 1 word)
+	    			tokens = single_triple[0].split(" "); //choose only one word as subject, otherwise arff will enclose in ''
+	    			single_triple[0] = tokens[tokens.length-1];
+	    		}
+	    		if(single_triple[1].contains(" ")){ //same for verb
+	    			tokens = single_triple[1].split(" ");
+	    			single_triple[1] = tokens[tokens.length-1];
+	    		}
+	    		if(single_triple[2].contains(" ")){ //same for object
+	    			tokens = single_triple[2].split(" ");
+	    			single_triple[2] = tokens[tokens.length-1];
+	    		}
+	    		triples.add(single_triple); //add single triple to triples list
+	    	}
+	    	printTriples(triples);  		
+	    }
+	    /*for (Sentence sent : doc.sentences()) {
 	    	// Iterate over the triples in the sentence
 	    	for (RelationTriple temp_triple : sent.openieTriples()) {
 	    		single_triple = tripleToArray(temp_triple); //sentence can have multiple triples, this is placeholder for one of them
@@ -37,7 +62,7 @@ public class OpenIE {
 	    		triples.add(single_triple); //add single triple to triples list
 	    	}
 	    	printTriples(triples);  		
-	    }
+	    }*/
 	    return triples;
 	}
 	
