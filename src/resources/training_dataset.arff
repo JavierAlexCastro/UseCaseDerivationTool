@@ -2744,7 +2744,6 @@ users,NNS,O,'physical entity',have,VB,transitive,N,levels,NNS,O,'abstract entity
 users,NNS,O,'physical entity',make,VB,intransitive,N,functions,NNS,O,'abstract entity',true
 users,NNS,O,'physical entity',make,VB,intransitive,N,modifications,NNS,O,'abstract entity',true
 users,NNS,O,'physical entity',select,VB,transitive,Y,item,NN,O,'abstract entity',true
-validity,NN,O,'abstract entity',give,VB,intransitive,N,	,NN,O,'physical entity',false
 value,NN,O,'abstract entity',are,VBP,intransitive,N,call,NN,O,'physical entity',false
 value,NN,O,'abstract entity',are,VBP,intransitive,N,instrument,NN,O,'physical entity',false
 values,NNS,O,'abstract entity',can,MD,transitive,N,database,NN,O,'abstract entity',false
