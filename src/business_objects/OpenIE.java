@@ -29,40 +29,23 @@ public class OpenIE {
 	    		single_triple = tripleToArray(temp_triple); //sentence can have multiple triples, this is placeholder for one of them
 	    		if(single_triple[0].contains(" ")){ //if subject part of triple contains a space (more than 1 word)
 	    			tokens = single_triple[0].split(" "); //choose only one word as subject, otherwise arff will enclose in ''
-	    			single_triple[0] = tokens[tokens.length-1];
+	    			single_triple[0] = tokens[tokens.length-1]; //last word
+	    			//single_triple[0] = tokens[0]; //first word
 	    		}
 	    		if(single_triple[1].contains(" ")){ //same for verb
 	    			tokens = single_triple[1].split(" ");
-	    			single_triple[1] = tokens[tokens.length-1];
+	    			single_triple[1] = tokens[tokens.length-1]; //last word
+	    			//single_triple[1] = tokens[0]; //first word
 	    		}
 	    		if(single_triple[2].contains(" ")){ //same for object
 	    			tokens = single_triple[2].split(" ");
-	    			single_triple[2] = tokens[tokens.length-1];
+	    			single_triple[2] = tokens[tokens.length-1];//last word
+	    			//single_triple[2] = tokens[0]; //first word
 	    		}
 	    		triples.add(single_triple); //add single triple to triples list
 	    	}
 	    	printTriples(triples);  		
 	    }
-	    /*for (Sentence sent : doc.sentences()) {
-	    	// Iterate over the triples in the sentence
-	    	for (RelationTriple temp_triple : sent.openieTriples()) {
-	    		single_triple = tripleToArray(temp_triple); //sentence can have multiple triples, this is placeholder for one of them
-	    		if(single_triple[0].contains(" ")){ //if subject part of triple contains a space (more than 1 word)
-	    			tokens = single_triple[0].split(" "); //choose only one word as subject, otherwise arff will enclose in ''
-	    			single_triple[0] = tokens[tokens.length-1];
-	    		}
-	    		if(single_triple[1].contains(" ")){ //same for verb
-	    			tokens = single_triple[1].split(" ");
-	    			single_triple[1] = tokens[tokens.length-1];
-	    		}
-	    		if(single_triple[2].contains(" ")){ //same for object
-	    			tokens = single_triple[2].split(" ");
-	    			single_triple[2] = tokens[tokens.length-1];
-	    		}
-	    		triples.add(single_triple); //add single triple to triples list
-	    	}
-	    	printTriples(triples);  		
-	    }*/
 	    return triples;
 	}
 	

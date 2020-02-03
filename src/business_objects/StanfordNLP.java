@@ -17,7 +17,7 @@ public class StanfordNLP {
 	}
 	
 	//Chain of Responsibility to handle exception somewhere else
-	public String[] getTypes(String[] triple) throws Exception{
+	public String[] getTags(String[] triple) throws Exception{
 		String stag = "";
 		String sner = "";
 		String vtag = "";

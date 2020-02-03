@@ -25,7 +25,7 @@ public class UseCase {
 	public void printUseCases() throws Exception{
 		System.out.println("================================");
 		for(int i=0; i<actors.size() && i<verbs.size() && i<objects.size(); i++){
-			System.out.println("Use Case #: " + i+1);
+			System.out.println("Use Case #: " + (i+1));
 			System.out.println("Actor: " + actors.get(i));
 			System.out.println("Verb: " + verbs.get(i));
 			System.out.println("Object: " + objects.get(i));

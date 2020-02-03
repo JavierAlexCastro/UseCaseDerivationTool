@@ -27,8 +27,7 @@ The system shall allow a potential participant to register for an event.
 The system shall allow the participant to select from a list of event of her/his interest.
 The system shall allow a participant to register for one or more events.
 The system shall generate a payment slip showing a summary and the total payment.
-The system shall allow the participant to print the payment slip to be sent together with the payment.
-Once the payment is received, the system shall change the participants’ registrations to “Paid” and notify the registering participant of this change.
+The system shall allow the participant to print the payment slip to be sent together with the payment. Once the payment is received, the system shall change the participants’ registrations to “Paid” and notify the registering participant of this change.
 The system shall allow a registering participant to cancel a registration without charge one week before the event and with a 10% cancellation charge afterwards.
 The system shall allow an NTSS staff to specify a floor plan with predefined sizes.
 The system shall allow payment by credit card, cashier check, personal check, money order, or PayPal.

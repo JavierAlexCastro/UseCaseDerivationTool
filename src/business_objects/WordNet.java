@@ -161,7 +161,7 @@ public class WordNet {
 				if(line.contains("*>")) { //line with relevant information for this context
 					if(line.contains("----ing")) { tokens = line.split("----ing"); } //verb can be presented as "----ing"
 					else { tokens = line.split("----s"); } //or as "----s". Split will result in only subject or subject and object.
-					if(tokens.length!=2) { //if there is a subject AND an object
+					if(tokens.length!=2) { //if there is not a subject AND an object
 						size_check = false; //verb is not transitive, since it needs an object to make sense
 					}
 				}

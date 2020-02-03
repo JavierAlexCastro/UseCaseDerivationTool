@@ -62,6 +62,12 @@ public class FeatureVector {
          oner+", "+otype+", "+"label";
    }
    
+   //creates a feature vector object and returns it - clearly..
+   public FeatureVector create(){
+	   FeatureVector fv = new FeatureVector();
+	   return fv;
+   }
+   
    //populate a feature vector with an individual row
    public void addRow(int req_no, String requirement, String[] triple, String[] tags, String[] types) {
 	   vcat.add(types[2]);
@@ -119,41 +125,6 @@ public class FeatureVector {
    public void insertLabel(int label) {
 	   
    }
-   
-   //geters
-   /*public ArrayList<Integer> getId(){ return id; }
-   public ArrayList<String> getSentence(){ return sentence; }
-   public ArrayList<String> getSubject() { return subject; }
-   public ArrayList<String> getStag(){ return stag; }
-   public ArrayList<String> getSner(){ return sner; }
-   public ArrayList<String> getStype(){ return stype; }
-   public ArrayList<String> getVerb(){ return verb; }
-   public ArrayList<String> getVtag(){ return vtag; }
-   public ArrayList<Integer> getVcat(){ return vcat; }
-   public ArrayList<Integer> getVprocess(){ return vprocess; }
-   public ArrayList<String> getObject(){ return object; }
-   public ArrayList<String> getOtag(){ return otag; }
-   public ArrayList<String> getOner(){ return oner; }
-   public ArrayList<String> getOtype(){ return otype; }
-   public ArrayList<Integer> getLabel(){ return label; }*/
-   
-   
-   //seters
-   /*public void setId(int id){ this.id=id; }
-   public void setSentence(String sentence){ this.sentence=sentence; }
-   public void setSubject(String subject){ this.subject=subject; }
-   public void setStag(String stag){ this.stag=stag; }
-   public void setSner(String sner){ this.sner=sner; }
-   public void setStype(String stype){ this.stype=stype; }
-   public void setVerb(String verb){ this.verb=verb; }
-   public void setVtag(String vtag){ this.vtag=vtag; }
-   public void setVcat(String vcat){ this.vcat=vcat; }
-   public void setVprocess(String vprocess){ this.vprocess=vprocess; }
-   public void setObject(String object){ this.object=object; }
-   public void setOtag(String otag){ this.otag=otag; }
-   public void setOner(String oner){ this.oner=oner; }
-   public void setOtype(String otype){ this.otype=otype; }
-   public void setLabel(int label){ this.label=label; }*/
 
    public static void main(String[] args) {
       //FeatureVector fv = new FeatureVector();

@@ -56,7 +56,7 @@ public class MachineLearningModel {
 				                 new BufferedReader(
 				                   new FileReader("src/resources/labelledFile_true_false_version.arff")));
 		 }catch(Exception e){
-			 System.out.println("Couldn't find training data file (src/resources/labelledFile_true_false_version.arff)");
+			 System.out.println("Error loading training data (src/resources/labelledFile_true_false_version.arff)");
 			 e.printStackTrace();
 		 }
 
@@ -74,11 +74,11 @@ public class MachineLearningModel {
 		 case "ZeroR":classifier = new ZeroR();break;
 		 case "AutoWEKA":
 			 classifier = new AutoWEKAClassifier();
-		     ((AutoWEKAClassifier) classifier).setTimeLimit(5);
+		     ((AutoWEKAClassifier) classifier).setTimeLimit(1);
 		     break;
 		 default:
 			 classifier = new AutoWEKAClassifier();
-		     ((AutoWEKAClassifier) classifier).setTimeLimit(5);
+		     ((AutoWEKAClassifier) classifier).setTimeLimit(1);
 		     break;
 		 }
 		 train.setClassIndex(train.numAttributes() - 1); //sets class index to 'label' attribute

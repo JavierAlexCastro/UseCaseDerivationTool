@@ -178,6 +178,7 @@ public class SystemGUI {
 		mnNewMenu.add(mntm_derive_uc);
 		
 	}
+	
 	//For making a prediction
 	private static void generateUCThread(String filename, String alg)  
     { 

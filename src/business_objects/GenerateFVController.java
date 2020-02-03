@@ -58,7 +58,7 @@ public class GenerateFVController {
 				Iterator<String[]> triple_iterator = triples.iterator(); //iterator pattern
 				while (triple_iterator.hasNext()) {
 					String[] triple = triple_iterator.next();
-					tags = nlp.getTypes(triple); //get the tags from stanfordNLP - expert pattern
+					tags = nlp.getTags(triple); //get the tags from stanfordNLP - expert pattern
 					types = wn.getTypes(triple); //get the types from wordNet - expert pattern
 					if(fv==null){ //if haven't created an object yet
 						fv = new FeatureVector();
